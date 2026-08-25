@@ -10,6 +10,7 @@ import {
   Recycle, Coffee, GraduationCap, ArrowLeft, ArrowRight,
 } from 'lucide-react';
 import PublicNav from '@/components/layout/PublicNav';
+import MobileStickyCta from '@/components/layout/MobileStickyCta';
 import SEO from '@/components/common/SEO';
 
 /* ── Brand data (sourced from IGO Group ecosystem) ─────────────────────── */
@@ -471,6 +472,12 @@ export default function IgoGroupBrands() {
           </div>
         </div>
       </section>
+
+      <footer style={{ background: '#0C2014', color: 'rgba(255,255,255,0.65)', textAlign: 'center', padding: '1.5rem 1rem', fontSize: '.82rem' }}>
+        &copy; 2026 IGO Academy — An Unit of IGO GROUP. TNSDC + MSME Recognised | Chennai, Tamil Nadu
+      </footer>
+
+      <MobileStickyCta />
     </div>
   );
 }

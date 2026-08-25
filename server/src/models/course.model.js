@@ -32,6 +32,35 @@ async function listPublic() {
 }
 
 /**
+ * Get a single active course for the public course-detail page (no auth).
+ * Requirement doc Section 5 — same field whitelist as listPublic() plus the
+ * published module titles (curriculum outline). Never exposes video keys,
+ * internal timestamps, or unpublished modules.
+ */
+async function findPublicById(id) {
+  const course = await db('courses as c')
+    .leftJoin('users as u', 'c.trainer_id', 'u.id')
+    .select(
+      'c.id', 'c.title', 'c.short_description', 'c.description',
+      'c.category', 'c.level', 'c.price', 'c.rating',
+      'c.duration_hours', 'c.thumbnail_url', 'c.prerequisites',
+      'u.full_name as trainer_name',
+    )
+    .where('c.id', id)
+    .andWhere('c.is_active', true)
+    .first();
+
+  if (!course) return null;
+
+  const modules = await db('class_modules')
+    .where({ course_id: id, is_published: true })
+    .orderBy('order_index')
+    .select('id', 'title', 'order_index');
+
+  return { ...course, modules };
+}
+
+/**
  * List all courses with trainer name
  * @param {{ is_active?: boolean }} opts
  */
@@ -130,4 +159,4 @@ async function deleteModule(id) {
   return db('class_modules').where({ id }).delete();
 }
 
-module.exports = { listPublic, list, findById, create, update, deactivate, remove, upsertModule, deleteModule };
+module.exports = { listPublic, findPublicById, list, findById, create, update, deactivate, remove, upsertModule, deleteModule };

@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import PublicNav from '@/components/layout/PublicNav';
+import MobileStickyCta from '@/components/layout/MobileStickyCta';
 import SEO from '@/components/common/SEO';
 import {
   GraduationCap, Target, Eye, Award, Users, MapPin, ArrowRight,
@@ -43,7 +44,7 @@ const DOMAINS = [
 const RECOGNITIONS = [
   { label: 'TNSDC Recognised', sub: 'Tamil Nadu Skill Development Corporation', color: '#22c55e' },
   { label: 'MSME Certified',   sub: 'Ministry of MSME, Govt. of India',        color: '#DAA520' },
-  { label: '1,000+ Learners',  sub: 'Trained across Tamil Nadu & beyond',      color: '#60a5fa' },
+  { label: 'Growing Learner Community', sub: 'Trained across Tamil Nadu & beyond', color: '#60a5fa' },
   { label: 'PAN India Reach',  sub: 'Online + offline hybrid programmes',      color: '#fb923c' },
 ];
 
@@ -65,7 +66,7 @@ export default function AboutPage() {
     <div style={{ minHeight: '100vh', fontFamily: "'Manrope', sans-serif", background: '#F5F7F3' }}>
       <SEO
         title="About IGO Academy — Mission, Vision & Recognition"
-        description="IGo Academy is the education arm of the IGO Group — TNSDC + MSME recognised agri-skill training built to make practical agriculture education accessible across India."
+        description="IGO Academy is the education arm of the IGO Group — TNSDC + MSME recognised agri-skill, practical training, career and entrepreneurship platform for students, farmers and entrepreneurs."
         path="/about"
       />
       <PublicNav />
@@ -312,14 +313,14 @@ export default function AboutPage() {
             WebkitBackgroundClip: 'text', backgroundClip: 'text',
             fontStyle: 'italic',
           }}>
-            15 Permanent Livelihoods.
+            Our Vision: 15 Livelihoods.
           </h2>
           <p style={{
             color: 'rgba(255,255,255,0.48)', fontSize: '1rem', lineHeight: 1.75,
             maxWidth: 560, margin: '0 auto 3.5rem', fontWeight: 300,
           }}>
-            Every farmpreneur trained by IGO Academy doesn't just build a business —
-            they create a permanent ring of employment around them. This is our formula.
+            Our vision: every farmpreneur we train has the potential to build an enterprise
+            that creates a ring of employment around them. Here's how we frame that potential.
           </p>
 
           {/* Formula row */}
@@ -436,7 +437,7 @@ export default function AboutPage() {
             {[
               { num: '01', title: 'Skill Certified', desc: 'Government-recognised certification in an agri-domain — valid for loans, jobs, and govt schemes.', color: '#DAA520', light: 'rgba(218,165,32,0.08)' },
               { num: '02', title: 'Enterprise Ready', desc: 'Trained to launch, manage, and scale a farm-based business — not just grow a crop.', color: '#22c55e', light: 'rgba(34,197,94,0.08)' },
-              { num: '03', title: 'Job Creator', desc: 'Every farmpreneur directly employs 5 family members and supports 10 more in their community.', color: '#60a5fa', light: 'rgba(96,165,250,0.08)' },
+              { num: '03', title: 'Job Creator', desc: 'Trained to build a farm enterprise capable of creating direct and indirect employment in their community.', color: '#60a5fa', light: 'rgba(96,165,250,0.08)' },
               { num: '04', title: 'IGO Ecosystem', desc: 'Connected to IGO\'s 26-brand network for inputs, market access, buyback, and growth capital.', color: '#a78bfa', light: 'rgba(167,139,250,0.08)' },
             ].map(c => (
               <div key={c.num} style={{
@@ -560,7 +561,7 @@ export default function AboutPage() {
             Ready to Grow?
           </h2>
           <p style={{ color: '#6b7280', fontSize: '.97rem', lineHeight: 1.72, marginBottom: '2.25rem' }}>
-            Join 1,000+ learners building real agri-skills with government-recognised certificates you can use for loans, jobs, and starting your own farm enterprise.
+            Join a growing community of learners building real agri-skills with government-recognised certificates you can use for loans, jobs, and starting your own farm enterprise.
           </p>
           <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
             <button
@@ -595,6 +596,11 @@ export default function AboutPage() {
         </div>
       </section>
 
+      <footer style={{ background: '#0C2014', color: 'rgba(255,255,255,0.65)', textAlign: 'center', padding: '1.5rem 1rem', fontSize: '.82rem' }}>
+        &copy; 2026 IGO Academy — An Unit of IGO GROUP. TNSDC + MSME Recognised | Chennai, Tamil Nadu
+      </footer>
+
+      <MobileStickyCta />
     </div>
   );
 }

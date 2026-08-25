@@ -18,7 +18,11 @@ api.interceptors.request.use((config) => {
 });
 
 /** Pages where a 401 must NOT trigger a redirect (avoids reload loops) */
-const PUBLIC_PATHS = ['/', '/courses', '/login', '/register', '/forgot-password', '/verify-otp', '/course-expired', '/verify', '/igo-brands'];
+const PUBLIC_PATHS = [
+  '/', '/courses', '/login', '/register', '/forgot-password', '/verify-otp',
+  '/course-expired', '/verify', '/igo-brands', '/about', '/contact',
+  '/privacy-policy', '/terms-and-conditions', '/refund-policy', '/disclaimer',
+];
 
 /** Handle session expiry globally */
 api.interceptors.response.use(

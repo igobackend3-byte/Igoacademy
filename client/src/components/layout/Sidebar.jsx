@@ -103,6 +103,11 @@ const Icons = {
       <path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/>
     </svg>
   ),
+  Enquiries: () => (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
+    </svg>
+  ),
 };
 
 /* ── Nav link definitions ─────────────────────────────────────── */
@@ -110,6 +115,7 @@ const adminLinks = [
   { to:'/admin/dashboard',    label:'Dashboard',    Icon:Icons.Dashboard    },
   { to:'/admin/users',        label:'Users',        Icon:Icons.Users        },
   { to:'/admin/courses',      label:'Courses',      Icon:Icons.Courses      },
+  { to:'/admin/enquiries',    label:'Enquiries',    Icon:Icons.Enquiries    },
   { to:'/admin/enrollments',  label:'Enrollments',  Icon:Icons.Enrollments  },
   { to:'/admin/assessments',  label:'Assessments',  Icon:Icons.Assessments  },
   { to:'/admin/certificates', label:'Certificates', Icon:Icons.Certificates },
@@ -150,10 +156,12 @@ function Avatar({ name, color }) {
 
 /* ── Pending-review badge (admin only) ──────────────────────────
    Polls a lightweight endpoint every 30s so admins see new access
-   requests / app leads from anywhere in the panel, not just after
-   opening Enrollments. Pops a toast the moment the count rises so
-   an admin already at their desk doesn't have to notice a number. */
-function usePendingCount(enabled) {
+   requests / app leads / website enquiries from anywhere in the panel,
+   not just after opening Enrollments or Enquiries. Pops a toast the
+   moment the total rises so an admin already at their desk doesn't
+   have to notice a number. Returns the raw counts object so each nav
+   link can show its own badge rather than one shared number. */
+function usePendingCounts(enabled) {
   const prevTotal = useRef(null);
   const { data } = useQuery({
     queryKey: ['admin-pending-counts'],
@@ -172,14 +180,16 @@ function usePendingCount(enabled) {
     prevTotal.current = data.total;
   }, [data]);
 
-  return data?.total || 0;
+  return data || { enrollmentRequests: 0, appLeads: 0, newEnquiries: 0, total: 0 };
 }
 
 /* ── Sidebar ─────────────────────────────────────────────────── */
 export default function Sidebar() {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
-  const pendingCount = usePendingCount(user?.role === 'admin');
+  const pendingCounts = usePendingCounts(user?.role === 'admin');
+  const enrollmentsBadge = pendingCounts.enrollmentRequests + pendingCounts.appLeads;
+  const enquiriesBadge = pendingCounts.newEnquiries;
 
   const links    = user?.role === 'admin' ? adminLinks : user?.role === 'trainer' ? trainerLinks : studentLinks;
   const roleLbl  = user?.role === 'admin' ? 'Administrator' : user?.role === 'trainer' ? 'Trainer' : 'Student';
@@ -265,7 +275,7 @@ export default function Sidebar() {
                   <Icon/>
                 </span>
                 <span style={{ flex:1 }}>{label}</span>
-                {to === '/admin/enrollments' && pendingCount > 0 && (
+                {((to === '/admin/enrollments' && enrollmentsBadge > 0) || (to === '/admin/enquiries' && enquiriesBadge > 0)) && (
                   <span style={{
                     minWidth:20, height:20, padding:'0 6px', borderRadius:10,
                     background: isActive ? 'rgba(12,32,20,0.85)' : '#E4572E',
@@ -273,7 +283,10 @@ export default function Sidebar() {
                     display:'flex', alignItems:'center', justifyContent:'center',
                     boxShadow: isActive ? 'none' : '0 0 8px rgba(228,87,46,0.6)',
                   }}>
-                    {pendingCount > 99 ? '99+' : pendingCount}
+                    {(() => {
+                      const n = to === '/admin/enrollments' ? enrollmentsBadge : enquiriesBadge;
+                      return n > 99 ? '99+' : n;
+                    })()}
                   </span>
                 )}
               </>

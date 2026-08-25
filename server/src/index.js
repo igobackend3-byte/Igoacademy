@@ -1,5 +1,5 @@
 /**
- * IGo Academy Platform — Express API Server Entry Point
+ * IGO Academy Platform — Express API Server Entry Point
  * @module index
  */
 require('dotenv').config({ path: require('path').join(__dirname, '../../.env') });
@@ -34,6 +34,7 @@ const resourceRoutes = require('./routes/resource.routes');
 const batchRoutes    = require('./routes/batch.routes');
 const appLeadsRoutes = require('./routes/appLeads.routes');
 const cronRoutes     = require('./routes/cron.routes');
+const enquiryRoutes  = require('./routes/enquiry.routes');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -116,6 +117,13 @@ const authLimiter = rateLimit({
   skip: () => isDev,
   message: { success: false, error: 'TOO_MANY_REQUESTS', message: 'Too many login attempts. Please wait a few minutes.', data: null },
 });
+// Basic anti-spam for the public enquiry form (Section 13 — anti-spam / form validation).
+const enquiryLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: isDev ? 10000 : 10,
+  skip: () => isDev,
+  message: { success: false, error: 'TOO_MANY_REQUESTS', message: 'Too many enquiries submitted. Please wait a few minutes and try again.', data: null },
+});
 app.use(globalLimiter);
 
 // ── Body Parsing ─────────────────────────────────────────────
@@ -130,7 +138,7 @@ if (process.env.NODE_ENV !== 'test') {
 
 // ── Health Check ─────────────────────────────────────────────
 app.get('/health', (req, res) => {
-  res.json({ success: true, data: { status: 'OK', version: '1.0.0', org: 'IGo Academy' }, error: null, message: 'Server is running' });
+  res.json({ success: true, data: { status: 'OK', version: '1.0.0', org: 'IGO Academy' }, error: null, message: 'Server is running' });
 });
 
 // ── API Routes ───────────────────────────────────────────────
@@ -149,6 +157,7 @@ app.use('/api/resources', resourceRoutes);
 app.use('/api/batches',   batchRoutes);
 app.use('/api/app-leads', appLeadsRoutes);
 app.use('/api/cron',      cronRoutes);
+app.use('/api/enquiries', enquiryLimiter, enquiryRoutes);
 
 // ── sitemap.xml ──────────────────────────────────────────────
 // Static public routes are fixed; there's no individual course-detail URL
@@ -231,7 +240,7 @@ async function bootstrap() {
 
     startCronJobs();
     app.listen(PORT, () => {
-      logger.info(`[Server] IGo Academy API running on port ${PORT} — ${process.env.NODE_ENV}`);
+      logger.info(`[Server] IGO Academy API running on port ${PORT} — ${process.env.NODE_ENV}`);
     });
   } catch (err) {
     logger.error('[Server] Bootstrap failed:', err.message);

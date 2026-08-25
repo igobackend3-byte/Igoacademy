@@ -39,14 +39,21 @@ import AdminAssessments  from '@/pages/admin/Assessments';
 import AdminCertificates from '@/pages/admin/Certificates';
 import AdminReports      from '@/pages/admin/Reports';
 import AdminResources    from '@/pages/admin/Resources';
+import AdminEnquiries    from '@/pages/admin/Enquiries';
 
 // Public
 import VerifyCertificate from '@/pages/public/VerifyCertificate';
 import Catalog           from '@/pages/public/Catalog';
+import CourseDetail      from '@/pages/public/CourseDetail';
 import HomePage          from '@/pages/public/HomePage';
 import IgoGroupBrands   from '@/pages/public/IgoGroupBrands';
 import AboutPage         from '@/pages/public/AboutPage';
 import PrivacyPolicy     from '@/pages/public/PrivacyPolicy';
+import ContactPage       from '@/pages/public/ContactPage';
+import EnquirePage       from '@/pages/public/EnquirePage';
+import TermsAndConditions from '@/pages/public/TermsAndConditions';
+import RefundPolicy      from '@/pages/public/RefundPolicy';
+import Disclaimer        from '@/pages/public/Disclaimer';
 import NotFound          from '@/pages/NotFound';
 
 export default function App() {
@@ -58,13 +65,14 @@ export default function App() {
           static default baked into index.html. */}
       <SEO
         title="IGO Academy Learning Platform"
-        description="IGo Academy — Grow. Learn. Lead. | Agri-Entrepreneurship Training Platform"
+        description="IGO Academy — An Unit of IGO GROUP | Together We Grow, Together We Achieve | Agriculture Skill Development, Practical Training, Career & Entrepreneurship Platform"
         path="/"
       />
       <Routes>
         {/* ── Public ─────────────────────────────────── */}
         <Route path="/" element={<HomePage />} />
         <Route path="/courses"         element={<Catalog />} />
+        <Route path="/courses/:id"     element={<CourseDetail />} />
         <Route path="/login"           element={<LoginPage />} />
         <Route path="/register"        element={<RegisterPage />} />
         <Route path="/forgot-password" element={<ForgotPasswordPage />} />
@@ -73,7 +81,12 @@ export default function App() {
         <Route path="/verify/:certificateId" element={<VerifyCertificate />} />
         <Route path="/igo-brands"            element={<IgoGroupBrands />} />
         <Route path="/about"                 element={<AboutPage />} />
+        <Route path="/contact"               element={<ContactPage />} />
+        <Route path="/enquire"               element={<EnquirePage />} />
         <Route path="/privacy-policy"        element={<PrivacyPolicy />} />
+        <Route path="/terms-and-conditions"  element={<TermsAndConditions />} />
+        <Route path="/refund-policy"         element={<RefundPolicy />} />
+        <Route path="/disclaimer"            element={<Disclaimer />} />
 
         {/* ── Student ────────────────────────────────── */}
         <Route path="/student" element={<ProtectedRoute role="student" />}>
@@ -112,6 +125,7 @@ export default function App() {
             <Route path="certificates"           element={<AdminCertificates />} />
             <Route path="reports"                element={<AdminReports />} />
             <Route path="resources"              element={<AdminResources />} />
+            <Route path="enquiries"              element={<AdminEnquiries />} />
           </Route>
         </Route>
 

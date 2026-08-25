@@ -1,5 +1,5 @@
 /**
- * Privacy Policy — plain-language description of what IGo Academy actually
+ * Privacy Policy — plain-language description of what IGO Academy actually
  * collects and does with user data. Content reflects the real data flows in
  * this codebase (auth.controller, payment.routes, certificate.service,
  * mobileAuthSync.service) — not generic boilerplate.
@@ -30,7 +30,7 @@ export default function PrivacyPolicy() {
     <div style={{ minHeight: '100vh', fontFamily: "'Manrope', sans-serif", background: '#F5F7F3' }}>
       <SEO
         title="Privacy Policy — IGO Academy"
-        description="How IGo Academy collects, uses, and protects your personal data — account details, course progress, certificates, and payments."
+        description="How IGO Academy collects, uses, and protects your personal data — account details, course progress, certificates, and payments."
         path="/privacy-policy"
       />
       <PublicNav />
@@ -45,9 +45,9 @@ export default function PrivacyPolicy() {
 
         <Section title="Who we are">
           <p>
-            IGo Academy (<strong>igoacademy.in</strong>) is an online agri-entrepreneurship training platform, recognised by
+            IGO Academy (<strong>igoacademy.in</strong>) is an online agri-entrepreneurship training platform, recognised by
             TNSDC (Tamil Nadu Skill Development Corporation) and certified by MSME (Ministry of MSME, Government of India).
-            IGo Academy is operated by the IGO Group, Chennai, Tamil Nadu, India. This policy explains what personal data we
+            IGO Academy is operated by the IGO Group, Chennai, Tamil Nadu, India. This policy explains what personal data we
             collect through the website and mobile app, why, and what rights you have over it.
           </p>
         </Section>
@@ -87,7 +87,7 @@ export default function PrivacyPolicy() {
 
         <Section title="Mobile app account sync">
           <p>
-            If you use both the IGo Academy website and the IGo Academy mobile app, your account is the same identity across
+            If you use both the IGO Academy website and the IGO Academy mobile app, your account is the same identity across
             both — signing in with the same email and password on either one accesses the same enrollments, progress, and
             certificates. Your password is never transmitted or stored in plaintext between systems.
           </p>
@@ -127,7 +127,7 @@ export default function PrivacyPolicy() {
 
         <Section title="Children's privacy">
           <p>
-            IGo Academy is intended for students, farmers, and entrepreneurs generally aged 16 and above. We do not knowingly
+            IGO Academy is intended for students, farmers, and entrepreneurs generally aged 16 and above. We do not knowingly
             collect personal data from children under 13.
           </p>
         </Section>
@@ -143,7 +143,7 @@ export default function PrivacyPolicy() {
           <p>
             Questions about this policy or your data — email us at{' '}
             <a href="mailto:igotnskills@gmail.com" style={{ color: '#3F8A24', fontWeight: 700 }}>igotnskills@gmail.com</a>,
-            or write to IGo Academy, IGO Group, Chennai, Tamil Nadu, India.
+            or write to IGO Academy, IGO Group, Chennai, Tamil Nadu, India.
           </p>
         </Section>
 
@@ -160,7 +160,15 @@ export default function PrivacyPolicy() {
       </div>
 
       <footer style={{ background: '#0C2014', color: 'rgba(255,255,255,0.65)', textAlign: 'center', padding: '1.5rem 1rem', fontSize: '.82rem' }}>
-        &copy; IGO Academy 2026 | TNSDC + MSME Recognised | Chennai, Tamil Nadu
+        &copy; 2026 IGO Academy — An Unit of IGO GROUP. TNSDC + MSME Recognised | Chennai, Tamil Nadu
+        {' · '}
+        <a href="/contact" style={{ color: 'rgba(255,255,255,0.65)' }}>Contact</a>
+        {' · '}
+        <a href="/terms-and-conditions" style={{ color: 'rgba(255,255,255,0.65)' }}>Terms &amp; Conditions</a>
+        {' · '}
+        <a href="/refund-policy" style={{ color: 'rgba(255,255,255,0.65)' }}>Refund Policy</a>
+        {' · '}
+        <a href="/disclaimer" style={{ color: 'rgba(255,255,255,0.65)' }}>Disclaimer</a>
       </footer>
     </div>
   );
