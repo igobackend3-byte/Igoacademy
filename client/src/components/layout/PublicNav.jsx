@@ -117,8 +117,8 @@ export default function PublicNav() {
             to={to}
             style={{
               textDecoration: 'none',
-              color:          '#4C5B50',
-              fontWeight:     600,
+              color:          '#0C2014',
+              fontWeight:     700,
               fontSize:       '.82rem',
               whiteSpace:     'nowrap',
             }}
