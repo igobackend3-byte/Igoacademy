@@ -12,13 +12,21 @@
  * current role only. No quotes are fabricated and attached to these real
  * names. Kept in sync with the shorter teaser list on the homepage
  * (HomePage.jsx's own SUCCESS_STORIES constant).
+ *
+ * `link` on each entry (added 26 Aug 2026) opens the real IGO Group
+ * department page matching that person's role — igogroups.in/departments/
+ * site-visit.html, data-analytics-legal.html, agri-operations.html, or the
+ * IGO Academy brand page — verified live before wiring, so the "Now With
+ * IGO Group" claim is backed by an actual IGO Group page, not a dead link.
+ * Photos are still pending from the Academy Head; cards stay initials-avatar
+ * until real headshots are supplied.
  */
 import PublicNav from '@/components/layout/PublicNav';
 import MobileStickyCta from '@/components/layout/MobileStickyCta';
 import EnquiryForm from '@/components/features/EnquiryForm';
 import SEO from '@/components/common/SEO';
 import SiteFooter from '@/components/layout/SiteFooter';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, ExternalLink } from 'lucide-react';
 
 const SUCCESS_STATS = [
   { num: '800+', label: 'Students Trained' },
@@ -28,12 +36,13 @@ const SUCCESS_STATS = [
 ];
 
 const SUCCESS_STORIES = [
-  { name: 'Ashmi Berona', role: 'Academy Junior Manager' },
-  { name: 'Kannan', role: 'Site Visit Executive' },
-  { name: 'Punith M', role: 'Site Visit SMO' },
-  { name: 'Sivani', role: 'Data Analyst' },
-  { name: 'Subanu', role: 'Data Analyst' },
-  { name: 'Jennifer', role: 'Data Analyst' },
+  { name: 'Ashmi Berona KS', role: 'Academy Junior Manager', link: 'https://igogroups.in/brands/igo-academy.html' },
+  { name: 'Kannan T', role: 'Site Visit Executive', link: 'https://igogroups.in/departments/site-visit.html' },
+  { name: 'Punith M', role: 'Site Visit SMO', link: 'https://igogroups.in/departments/site-visit.html' },
+  { name: 'Sivani M', role: 'Data Analyst', link: 'https://igogroups.in/departments/data-analytics-legal.html' },
+  { name: 'Subanu R', role: 'Data Analyst', link: 'https://igogroups.in/departments/data-analytics-legal.html' },
+  { name: 'Jenifer A', role: 'Data Analyst', link: 'https://igogroups.in/departments/data-analytics-legal.html' },
+  { name: 'Sobin G', role: 'Agri Estate Executive', link: 'https://igogroups.in/departments/agri-operations.html' },
 ];
 
 export default function StudentSuccessPage() {
@@ -82,22 +91,23 @@ export default function StudentSuccessPage() {
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: '1.25rem', marginBottom: '3.5rem' }}>
           {SUCCESS_STORIES.map((t, i) => (
-            <div key={i} style={{
+            <a key={i} href={t.link} target="_blank" rel="noopener noreferrer" style={{
               background: 'white', border: '1px solid rgba(0,0,0,.06)', borderRadius: 18,
               padding: '1.75rem', display: 'flex', alignItems: 'center', gap: '1rem',
-              boxShadow: '0 2px 12px rgba(0,0,0,.04)',
+              boxShadow: '0 2px 12px rgba(0,0,0,.04)', textDecoration: 'none', cursor: 'pointer',
             }}>
               <div style={{
                 width: 52, height: 52, borderRadius: '50%', background: '#DAA520',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                 color: 'white', fontWeight: 800, fontSize: '1.15rem', flexShrink: 0,
               }}>{t.name.charAt(0)}</div>
-              <div>
+              <div style={{ flex: 1, minWidth: 0 }}>
                 <div style={{ fontWeight: 800, fontSize: '.98rem', color: '#0C2014' }}>{t.name}</div>
                 <div style={{ fontSize: '.8rem', color: '#6b7280' }}>{t.role}</div>
                 <div style={{ fontSize: '.72rem', color: '#3F8A24', fontWeight: 700, marginTop: 2 }}>IGO Group</div>
               </div>
-            </div>
+              <ExternalLink size={14} color="#9ca3af" style={{ flexShrink: 0 }} />
+            </a>
           ))}
         </div>
 

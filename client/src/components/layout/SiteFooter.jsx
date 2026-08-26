@@ -9,12 +9,13 @@
  * footer — TNSDC/MSME recognition plus the IGO Group and legal-page
  * links — none of which had a home in the new 4-column footer yet.
  *
- * Social links below are placeholders (href="#") — swap in the real
- * Instagram / YouTube / LinkedIn / Facebook URLs once IGO Academy shares
- * them; until then they're inert rather than pointing anywhere wrong.
+ * Follow Us shows only the two real, confirmed IGO Academy social
+ * profiles (Facebook, Instagram — added 26 Aug 2026). YouTube and
+ * LinkedIn were placeholder icons pointing nowhere real and have been
+ * removed rather than left as dead links.
  */
 import { useNavigate } from 'react-router-dom';
-import { Instagram, Youtube, Linkedin, Facebook, Phone, Mail, MapPin } from 'lucide-react';
+import { Instagram, Facebook, Phone, Mail, MapPin } from 'lucide-react';
 import { IGO_META, IGO_CONTACT } from '@/constants/brand';
 
 const QUICK_LINKS = [
@@ -40,10 +41,8 @@ const RECOGNITIONS = [
 ];
 
 const SOCIALS = [
-  { Icon: Instagram, label: 'Instagram', href: '#' },
-  { Icon: Youtube,   label: 'YouTube',   href: '#' },
-  { Icon: Linkedin,  label: 'LinkedIn',  href: '#' },
-  { Icon: Facebook,  label: 'Facebook',  href: '#' },
+  { Icon: Facebook,  label: 'Facebook',  href: 'https://www.facebook.com/profile.php?id=61589212120511&sk=reels_tab' },
+  { Icon: Instagram, label: 'Instagram', href: 'https://www.instagram.com/igo__academy?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==' },
 ];
 
 export default function SiteFooter() {
@@ -160,8 +159,9 @@ export default function SiteFooter() {
               <a
                 key={label}
                 href={href}
+                target="_blank"
+                rel="noopener noreferrer"
                 aria-label={label}
-                onClick={e => { if (href === '#') e.preventDefault(); }}
                 style={{
                   width: 34, height: 34, borderRadius: '50%',
                   background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.12)',
