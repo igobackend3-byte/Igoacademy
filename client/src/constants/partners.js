@@ -24,6 +24,10 @@
  * cards and the profile page fall back to a generic icon when this is
  * absent. Stored under /public/partners/.
  *
+ * gallery (Gandhigram University): the real MOU signing photo at The
+ * Gandhigram Rural Institute - Deemed to be University, Ministry of
+ * Education, Government of India, supplied by the Academy Head.
+ *
  * gallery (VELS University): real, geo-tagged photos from an actual value
  * added course session delivered on VELS's own campus (Technology Business
  * Incubation Center, Pallavaram, Chennai — 9 Mar 2026) and the live
@@ -36,6 +40,9 @@ export const PARTNERS = [
     slug: 'gandhigram-university', name: 'Gandhigram University', label: 'MOU Partner',
     logo: '/partners/gandhigram-university-logo.png',
     description: "IGO Academy has entered into a formal MOU with Gandhigram University, extending collaborative agriculture skill development and practical training into the university's academic framework — a model we're scaling with further institutions.",
+    gallery: [
+      { src: '/partners/gandhigram-university/gandhigram-mou-signing-1.jpg', caption: 'MOU signing between IGO Group and The Gandhigram Rural Institute - Deemed to be University, Ministry of Education, Government of India' },
+    ],
   },
   {
     slug: 'vels-university', name: 'VELS University', label: 'Value Added Course Partner',
