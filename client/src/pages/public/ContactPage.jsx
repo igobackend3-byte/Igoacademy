@@ -58,7 +58,9 @@ export default function ContactPage() {
               Terms / Refund / Disclaimer) rather than brand.js's IGO_META.email, which
               doesn't appear to be a monitored inbox anywhere else in this codebase. */}
           <ContactRow Icon={Mail} label="Email" value="igotnskills@gmail.com" href="mailto:igotnskills@gmail.com" />
+          {IGO_CONTACT.email2 && <ContactRow Icon={Mail} label="Email (Academy Head)" value={IGO_CONTACT.email2} href={`mailto:${IGO_CONTACT.email2}`} />}
           {IGO_CONTACT.phone && <ContactRow Icon={Phone} label="Phone" value={IGO_CONTACT.phone} href={`tel:${IGO_CONTACT.phone}`} />}
+          {IGO_CONTACT.phone2 && <ContactRow Icon={Phone} label="Phone (Alternate)" value={IGO_CONTACT.phone2} href={`tel:${IGO_CONTACT.phone2}`} />}
           {IGO_CONTACT.whatsapp && <ContactRow Icon={MessageCircle} label="WhatsApp" value="Chat with us" href={`https://wa.me/${IGO_CONTACT.whatsapp}`} />}
           <ContactRow Icon={MapPin} label="Address" value={IGO_META.address} />
 

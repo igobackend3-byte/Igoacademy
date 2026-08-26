@@ -85,11 +85,17 @@ export default function SiteFooter() {
           </div>
           <div style={{ display: 'flex', alignItems: 'flex-start', gap: 8, marginBottom: '.6rem' }}>
             <Phone size={14} color="#DAA520" style={{ marginTop: 2, flexShrink: 0 }} />
-            <span style={{ color: 'rgba(255,255,255,0.5)', fontSize: '.8rem', lineHeight: 1.5 }}>{IGO_CONTACT.phone}</span>
+            <span style={{ color: 'rgba(255,255,255,0.5)', fontSize: '.8rem', lineHeight: 1.5 }}>
+              {IGO_CONTACT.phone}
+              {IGO_CONTACT.phone2 && <>, {IGO_CONTACT.phone2}</>}
+            </span>
           </div>
           <div style={{ display: 'flex', alignItems: 'flex-start', gap: 8, marginBottom: '.6rem' }}>
             <Mail size={14} color="#DAA520" style={{ marginTop: 2, flexShrink: 0 }} />
-            <span style={{ color: 'rgba(255,255,255,0.5)', fontSize: '.8rem', lineHeight: 1.5 }}>{IGO_META.email}</span>
+            <span style={{ color: 'rgba(255,255,255,0.5)', fontSize: '.8rem', lineHeight: 1.5 }}>
+              {IGO_META.email}
+              {IGO_CONTACT.email2 && <>, {IGO_CONTACT.email2}</>}
+            </span>
           </div>
           <div style={{ display: 'flex', alignItems: 'flex-start', gap: 8 }}>
             <MapPin size={14} color="#DAA520" style={{ marginTop: 2, flexShrink: 0 }} />

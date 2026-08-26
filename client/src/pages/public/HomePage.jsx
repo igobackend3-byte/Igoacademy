@@ -9,7 +9,7 @@ import {
   ArrowRight, CheckCircle, Award, Users, MapPin,
   Leaf, Fish, Layers, Sun, PawPrint, Building2,
   Droplet, Droplets, TreePine, Briefcase,
-  Quote, HeartHandshake, School, Calendar,
+  Quote, School, Calendar,
 } from 'lucide-react';
 import PublicNav from '@/components/layout/PublicNav';
 import MobileStickyCta from '@/components/layout/MobileStickyCta';
@@ -907,29 +907,30 @@ export default function HomePage() {
             </h2>
           </div>
 
-          {/* Featured collaboration — VELS University */}
+          {/* Featured collaboration — Gandhigram University */}
           <div style={{
             background: 'linear-gradient(135deg, #0C2014 0%, #235C39 100%)', borderRadius: 22,
             padding: '2.25rem 2rem', marginBottom: '2rem', display: 'flex', flexWrap: 'wrap',
             alignItems: 'flex-start', gap: '1.5rem', color: 'white',
           }}>
             <div style={{
-              width: 56, height: 56, borderRadius: 16, background: 'rgba(255,255,255,0.1)',
+              width: 56, height: 56, borderRadius: 16, background: 'white',
+              border: '1px solid rgba(0,0,0,.07)',
               display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0,
             }}>
-              <HeartHandshake size={26} color="#DAA520" />
+              <School size={26} color="#3F8A24" strokeWidth={1.75} />
             </div>
             <div style={{ flex: '1 1 320px' }}>
               <span style={{ display: 'block', color: '#DAA520', fontSize: '.68rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '.15em' }}>
                 Featured Collaboration
               </span>
               <h3 style={{ fontFamily: "'Sora', sans-serif", fontWeight: 900, color: 'white', fontSize: '1.15rem', lineHeight: 1.35, letterSpacing: '-.01em', margin: '.5rem 0 .6rem' }}>
-                VELS University — Value Added Course Partner
+                Gandhigram University — MOU Partner
               </h3>
               <p style={{ color: 'rgba(255,255,255,0.65)', fontSize: '.85rem', lineHeight: 1.6, margin: 0 }}>
-                IGO Academy has delivered a Value Added Course to VELS University students, extending
-                practical, farm-based agriculture training into the university's own curriculum — a model
-                we're scaling with further institutions.
+                IGO Academy has entered into a formal MOU with Gandhigram University, extending
+                collaborative agriculture skill development and practical training into the university's
+                academic framework — a model we're scaling with further institutions.
               </p>
             </div>
           </div>

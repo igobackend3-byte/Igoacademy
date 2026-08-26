@@ -33,12 +33,19 @@ export const IGO_META = {
  * Lead-generation contact channels (Section 7 — Lead Generation and WhatsApp).
  * Confirmed real by the IGO Academy team on 25 Aug 2026 — Call/WhatsApp CTAs
  * across MobileStickyCta, the nav, and the Contact page are now active.
+ * `phone2` (added 26 Aug 2026) is a second real contact number — shown
+ * alongside `phone` on the footer and Contact page; the mobile sticky
+ * Call button still uses the single primary `phone` number.
+ * `email2` (added 26 Aug 2026) is a second real contact email — shown
+ * alongside the primary contact email on the footer and Contact page.
  * Format `whatsapp` as digits only, country code first (no '+', spaces or
  * dashes), since it is used directly in a wa.me link.
  */
 export const IGO_CONTACT = {
-  phone: '+91 98765 43210',
+  phone: '+91 89258 93318',
+  phone2: '+91 89258 29915',
   whatsapp: '919876543210',
+  email2: 'head@igoacademy.in',
 };
 
 export const USER_ROLES = {
