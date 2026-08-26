@@ -18,6 +18,7 @@ import SEO from '@/components/common/SEO';
 import SiteFooter from '@/components/layout/SiteFooter';
 import { ORGANIZATION_SCHEMA, HOME_FAQS, buildFaqSchema } from '@/constants/schema';
 import { SUCCESS_STORIES } from '@/constants/successStories';
+import { PARTNERS } from '@/constants/partners';
 
 /* ── All 26 IGO Group brands for the homepage ticker ──────────────── */
 const ALL_BRANDS = [
@@ -140,16 +141,6 @@ const SUCCESS_STATS = [
   { num: '50+', label: 'Students Placed' },
   { num: 'Multiple', label: 'Live Agriculture Projects' },
   { num: '—', label: 'Industry-Focused Programs' },
-];
-
-/* ── Academic & Industry Partnerships — spec Section 9 ───────────────── */
-const PARTNERS = [
-  { name: 'Gandhigram University', label: 'MOU Partner', logo: '/partners/gandhigram-university-logo.png' },
-  { name: 'VELS University', label: 'Value Added Course Partner', logo: '/partners/vels-university-logo.png' },
-  { name: 'IGO GROUP', label: 'Parent Group', logo: '/partners/igo-group-logo.jpg' },
-  { name: 'TNSDC, MSME', label: 'Recognised By' },
-  { name: 'Industry Partners', label: 'Placement & Project Partner' },
-  { name: 'Future Institutional Collaborations', label: 'Coming Soon' },
 ];
 
 /* ════════════════════════════════════════════════════════════════════ */
@@ -912,11 +903,14 @@ export default function HomePage() {
           </div>
 
           {/* Featured collaboration — Gandhigram University */}
-          <div style={{
-            background: 'linear-gradient(135deg, #0C2014 0%, #235C39 100%)', borderRadius: 22,
-            padding: '2.25rem 2rem', marginBottom: '2rem', display: 'flex', flexWrap: 'wrap',
-            alignItems: 'flex-start', gap: '1.5rem', color: 'white',
-          }}>
+          <div
+            onClick={() => navigate('/partners/gandhigram-university')}
+            style={{
+              background: 'linear-gradient(135deg, #0C2014 0%, #235C39 100%)', borderRadius: 22,
+              padding: '2.25rem 2rem', marginBottom: '2rem', display: 'flex', flexWrap: 'wrap',
+              alignItems: 'flex-start', gap: '1.5rem', color: 'white', cursor: 'pointer',
+            }}
+          >
             <div style={{
               width: 92, height: 92, borderRadius: 18, background: 'white',
               border: '1px solid rgba(0,0,0,.07)',
@@ -941,10 +935,14 @@ export default function HomePage() {
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))', gap: '1rem' }}>
             {PARTNERS.map(p => (
-              <div key={p.name} style={{
-                background: '#F5F7F3', border: '1px solid rgba(0,0,0,.06)', borderRadius: 16,
-                padding: '1.25rem', display: 'flex', alignItems: 'center', gap: '.85rem',
-              }}>
+              <div
+                key={p.name}
+                onClick={() => navigate(`/partners/${p.slug}`)}
+                style={{
+                  background: '#F5F7F3', border: '1px solid rgba(0,0,0,.06)', borderRadius: 16,
+                  padding: '1.25rem', display: 'flex', alignItems: 'center', gap: '.85rem', cursor: 'pointer',
+                }}
+              >
                 <div style={{ width: 68, height: 68, borderRadius: 14, background: 'white', border: '1px solid rgba(0,0,0,.07)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, overflow: 'hidden' }}>
                   {p.logo ? (
                     <img src={p.logo} alt={p.name} style={{ width: '100%', height: '100%', objectFit: 'contain', padding: 6 }} />
@@ -952,10 +950,11 @@ export default function HomePage() {
                     <School size={26} color="#3F8A24" strokeWidth={1.75} />
                   )}
                 </div>
-                <div>
+                <div style={{ flex: 1, minWidth: 0 }}>
                   <div style={{ fontWeight: 800, fontSize: '.85rem', color: '#0C2014', lineHeight: 1.3 }}>{p.name}</div>
                   <div style={{ fontSize: '.72rem', color: '#6b7280' }}>{p.label}</div>
                 </div>
+                <ArrowRight size={14} color="#9ca3af" style={{ flexShrink: 0 }} />
               </div>
             ))}
           </div>
