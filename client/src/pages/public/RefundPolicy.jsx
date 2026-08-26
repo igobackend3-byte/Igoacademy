@@ -62,7 +62,7 @@ export default function RefundPolicy() {
 
         <Section title="How to request a refund">
           <p>
-            Email <a href="mailto:igotnskills@gmail.com" style={{ color: '#3F8A24', fontWeight: 700 }}>igotnskills@gmail.com</a>{' '}
+            Email <a href="mailto:head@igoacademy.in" style={{ color: '#3F8A24', fontWeight: 700 }}>head@igoacademy.in</a>{' '}
             with your registered email, the course name, and your Razorpay payment reference. We aim to respond within
             3 business days.
           </p>
@@ -95,7 +95,7 @@ export default function RefundPolicy() {
         <Section title="Contact us">
           <p>
             Questions about this policy — email{' '}
-            <a href="mailto:igotnskills@gmail.com" style={{ color: '#3F8A24', fontWeight: 700 }}>igotnskills@gmail.com</a>,
+            <a href="mailto:head@igoacademy.in" style={{ color: '#3F8A24', fontWeight: 700 }}>head@igoacademy.in</a>,
             or write to {IGO_META.fullName}, Chennai, Tamil Nadu, India.
           </p>
         </Section>

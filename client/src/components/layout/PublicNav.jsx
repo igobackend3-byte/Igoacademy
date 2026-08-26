@@ -4,9 +4,10 @@
  * Nav structure follows the website refinement spec, Section 3.1 — Home,
  * About Us, Programs, Workshops, Corporate Training, Student Success,
  * Careers, Contact, plus a visually distinct "Apply Now" CTA. Student
- * Success links to the homepage section (id="student-success") rather than
- * a standalone page, matching how Practical Training/Career pathways
- * already scroll-link from other pages. IGO Group and the old Practical
+ * Success links to its own dedicated page (/student-success, added 26 Aug
+ * 2026 with real IGO Academy trainees now working within IGO Group) —
+ * the homepage keeps a shorter teaser at id="student-success" that links
+ * through to the same page. IGO Group and the old Practical
  * Training/Career & Entrepreneurship top-level links were dropped per the
  * spec's "keep the primary menu short" instruction — those pages/sections
  * remain reachable by URL, just not from the nav.
@@ -27,7 +28,7 @@ const NAV_LINKS = [
   ['Programs', '/courses'],
   ['Workshops', '/workshops'],
   ['Corporate Training', '/for-colleges'],
-  ['Student Success', '/#student-success'],
+  ['Student Success', '/student-success'],
   ['Careers', '/careers'],
   ['Contact', '/contact'],
 ];

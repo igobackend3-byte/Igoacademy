@@ -55,10 +55,10 @@ export default function ContactPage() {
       <div style={{ maxWidth: 1000, margin: '0 auto', padding: '3.5rem 1.5rem 5rem', display: 'grid', gridTemplateColumns: 'minmax(240px, 340px) 1fr', gap: '2.5rem' }}>
         <div>
           {/* Uses the real, actively-referenced contact address (matches Privacy Policy /
-              Terms / Refund / Disclaimer) rather than brand.js's IGO_META.email, which
-              doesn't appear to be a monitored inbox anywhere else in this codebase. */}
-          <ContactRow Icon={Mail} label="Email" value="igotnskills@gmail.com" href="mailto:igotnskills@gmail.com" />
-          {IGO_CONTACT.email2 && <ContactRow Icon={Mail} label="Email (Academy Head)" value={IGO_CONTACT.email2} href={`mailto:${IGO_CONTACT.email2}`} />}
+              Terms / Refund / Disclaimer) — head@igoacademy.in, replacing the retired
+              igotnskills@gmail.com address (removed sitewide 26 Aug 2026). Reads from
+              IGO_CONTACT.email2 (brand.js) so this stays in sync with the other pages. */}
+          <ContactRow Icon={Mail} label="Email" value={IGO_CONTACT.email2} href={`mailto:${IGO_CONTACT.email2}`} />
           {IGO_CONTACT.phone && <ContactRow Icon={Phone} label="Phone" value={IGO_CONTACT.phone} href={`tel:${IGO_CONTACT.phone}`} />}
           {IGO_CONTACT.phone2 && <ContactRow Icon={Phone} label="Phone (Alternate)" value={IGO_CONTACT.phone2} href={`tel:${IGO_CONTACT.phone2}`} />}
           {IGO_CONTACT.whatsapp && <ContactRow Icon={MessageCircle} label="WhatsApp" value="Chat with us" href={`https://wa.me/${IGO_CONTACT.whatsapp}`} />}

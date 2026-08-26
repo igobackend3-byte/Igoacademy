@@ -17,7 +17,7 @@ const QUICK_LINKS = [
   ['Programs', '/courses'],
   ['Workshops', '/workshops'],
   ['About Us', '/about'],
-  ['Student Success', '/#student-success'],
+  ['Student Success', '/student-success'],
   ['Contact', '/contact'],
 ];
 

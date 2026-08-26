@@ -140,7 +140,7 @@ export default function TermsAndConditions() {
         <Section title="Contact us">
           <p>
             Questions about these terms — email{' '}
-            <a href="mailto:igotnskills@gmail.com" style={{ color: '#3F8A24', fontWeight: 700 }}>igotnskills@gmail.com</a>,
+            <a href="mailto:head@igoacademy.in" style={{ color: '#3F8A24', fontWeight: 700 }}>head@igoacademy.in</a>,
             or write to {IGO_META.fullName}, Chennai, Tamil Nadu, India.
           </p>
         </Section>

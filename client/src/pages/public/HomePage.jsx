@@ -9,7 +9,7 @@ import {
   ArrowRight, CheckCircle, Award, Users, MapPin,
   Leaf, Fish, Layers, Sun, PawPrint, Building2,
   Droplet, Droplets, TreePine, Briefcase,
-  Quote, School, Calendar,
+  School, Calendar,
 } from 'lucide-react';
 import PublicNav from '@/components/layout/PublicNav';
 import MobileStickyCta from '@/components/layout/MobileStickyCta';
@@ -128,10 +128,12 @@ const WHY = [
 ];
 
 /* ── Student Success — website refinement spec, Section 7 ───────────────
-   Testimonials below are clearly-marked SAMPLE content (per the agreed
-   placeholder approach) pending real student names/photos/quotes from
-   IGO Academy — replace each `sample: true` entry with a real one as it's
-   confirmed, and drop the "Sample" badge once it is. ── */
+   Real IGO Academy trainees now working within the IGO Group itself,
+   provided directly by the Academy Head (26 Aug 2026) — replacing the
+   earlier clearly-marked SAMPLE placeholder testimonials. No quotes are
+   fabricated and attached to these real names — only the real name and
+   the role each person now holds. Kept in sync with the fuller list on
+   the dedicated /student-success page (StudentSuccessPage.jsx). ── */
 const SUCCESS_STATS = [
   { num: '800+', label: 'Students Trained' },
   { num: '50+', label: 'Students Placed' },
@@ -139,11 +141,13 @@ const SUCCESS_STATS = [
   { num: '—', label: 'Industry-Focused Programs' },
 ];
 
-const TESTIMONIALS = [
-  { name: 'Sample Student', course: 'Hydroponics', role: 'Farm Manager, sample agri-business', quote: 'The practical exposure at IGO Academy helped me understand farming beyond textbooks.', sample: true },
-  { name: 'Sample Student', course: 'Advanced Farm Management', role: 'Running own farm enterprise', quote: 'Hands-on training gave me the confidence to set up and manage my own farm operation.', sample: true },
-  { name: 'Sample Student', course: 'Microgreens', role: 'Founder, sample microgreens venture', quote: 'I went from curious beginner to running a small microgreens business within months.', sample: true },
-  { name: 'Sample Student', course: 'Polyhouse Farming', role: 'Agri-technician, sample employer', quote: 'The live farm sessions taught me things no classroom video ever could.', sample: true },
+const SUCCESS_STORIES = [
+  { name: 'Ashmi Berona', role: 'Academy Junior Manager' },
+  { name: 'Kannan', role: 'Site Visit Executive' },
+  { name: 'Punith M', role: 'Site Visit SMO' },
+  { name: 'Sivani', role: 'Data Analyst' },
+  { name: 'Subanu', role: 'Data Analyst' },
+  { name: 'Jennifer', role: 'Data Analyst' },
 ];
 
 /* ── Academic & Industry Partnerships — spec Section 9 ───────────────── */
@@ -820,37 +824,33 @@ export default function HomePage() {
             ))}
           </div>
 
-          {/* Testimonials */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))', gap: '1.25rem' }}>
-            {TESTIMONIALS.map((t, i) => (
+          {/* Success stories */}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))', gap: '1.25rem', marginBottom: '2.25rem' }}>
+            {SUCCESS_STORIES.map((t, i) => (
               <div key={i} style={{
                 background: '#F5F7F3', border: '1px solid rgba(0,0,0,.06)', borderRadius: 18,
-                padding: '1.5rem', position: 'relative',
+                padding: '1.5rem', display: 'flex', alignItems: 'center', gap: '.9rem',
               }}>
-                {t.sample && (
-                  <span style={{
-                    position: 'absolute', top: 12, right: 12, background: '#fef3c7', color: '#b45309',
-                    fontSize: '.6rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '.05em',
-                    padding: '3px 8px', borderRadius: 20,
-                  }}>Sample</span>
-                )}
-                <Quote size={18} color="#C5A03F" style={{ marginBottom: '.6rem' }} />
-                <p style={{ color: '#4C5B50', fontSize: '.85rem', lineHeight: 1.65, marginBottom: '1rem', fontStyle: 'italic' }}>
-                  "{t.quote}"
-                </p>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                  <div style={{
-                    width: 36, height: 36, borderRadius: '50%', background: '#DAA520',
-                    display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    color: 'white', fontWeight: 800, fontSize: '.85rem', flexShrink: 0,
-                  }}>{t.name.charAt(0)}</div>
-                  <div>
-                    <div style={{ fontWeight: 800, fontSize: '.82rem', color: '#0C2014' }}>{t.name}</div>
-                    <div style={{ fontSize: '.72rem', color: '#6b7280' }}>{t.course} · {t.role}</div>
-                  </div>
+                <div style={{
+                  width: 44, height: 44, borderRadius: '50%', background: '#DAA520',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  color: 'white', fontWeight: 800, fontSize: '1rem', flexShrink: 0,
+                }}>{t.name.charAt(0)}</div>
+                <div>
+                  <div style={{ fontWeight: 800, fontSize: '.9rem', color: '#0C2014' }}>{t.name}</div>
+                  <div style={{ fontSize: '.76rem', color: '#6b7280' }}>{t.role} · IGO Group</div>
                 </div>
               </div>
             ))}
+          </div>
+
+          <div style={{ textAlign: 'center' }}>
+            <span
+              onClick={() => navigate('/student-success')}
+              style={{ color: '#2d6a14', fontWeight: 700, fontSize: '.88rem', cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: 6 }}
+            >
+              View All Success Stories <ArrowRight size={14} />
+            </span>
           </div>
         </div>
       </section>
