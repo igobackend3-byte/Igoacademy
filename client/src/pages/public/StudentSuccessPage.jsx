@@ -88,9 +88,9 @@ export default function StudentSuccessPage() {
               boxShadow: '0 2px 12px rgba(0,0,0,.04)', textDecoration: 'none', cursor: 'pointer',
             }}>
               <div style={{
-                width: 52, height: 52, borderRadius: '50%', background: '#DAA520',
+                width: 76, height: 76, borderRadius: '50%', background: '#DAA520',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
-                color: 'white', fontWeight: 800, fontSize: '1.15rem', flexShrink: 0, overflow: 'hidden',
+                color: 'white', fontWeight: 800, fontSize: '1.5rem', flexShrink: 0, overflow: 'hidden',
               }}>
                 {t.photo ? (
                   <img src={t.photo} alt={t.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />

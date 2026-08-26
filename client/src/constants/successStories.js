@@ -41,6 +41,7 @@ export const SUCCESS_STORIES = [
     testimonial: null,
     link: 'https://igogroups.in/brands/igo-academy.html',
     linkLabel: 'IGO Academy at IGO Group',
+    photo: '/success-photos/ashmi-berona-ks.jpg',
   },
   {
     slug: 'kannan-t',
@@ -79,6 +80,7 @@ export const SUCCESS_STORIES = [
     testimonial: null,
     link: 'https://igogroups.in/departments/data-analytics-legal.html',
     linkLabel: 'IGO Data Analytics & Legal Department',
+    photo: '/success-photos/subanu-r.jpg',
   },
   {
     slug: 'jenifer-a',
