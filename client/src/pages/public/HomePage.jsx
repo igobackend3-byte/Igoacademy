@@ -943,11 +943,11 @@ export default function HomePage() {
                   padding: '1.25rem', display: 'flex', alignItems: 'center', gap: '.85rem', cursor: 'pointer',
                 }}
               >
-                <div style={{ width: 68, height: 68, borderRadius: 14, background: 'white', border: '1px solid rgba(0,0,0,.07)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, overflow: 'hidden' }}>
+                <div style={{ width: 100, height: 100, borderRadius: 16, background: 'white', border: '1px solid rgba(0,0,0,.07)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, overflow: 'hidden' }}>
                   {p.logo ? (
-                    <img src={p.logo} alt={p.name} style={{ width: '100%', height: '100%', objectFit: 'contain', padding: 6 }} />
+                    <img src={p.logo} alt={p.name} style={{ width: '100%', height: '100%', objectFit: 'contain', padding: 8 }} />
                   ) : (
-                    <School size={26} color="#3F8A24" strokeWidth={1.75} />
+                    <School size={36} color="#3F8A24" strokeWidth={1.75} />
                   )}
                 </div>
                 <div style={{ flex: 1, minWidth: 0 }}>

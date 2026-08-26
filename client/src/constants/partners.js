@@ -59,6 +59,7 @@ export const PARTNERS = [
   },
   {
     slug: 'tnsdc-msme', name: 'TNSDC, MSME', label: 'Recognised By',
+    logo: '/partners/tnsdc-msme-logo.png',
     description: "IGO Academy's skill training is recognised by TN Skill Corporation (TNSDC) and MSME. Students who clear a government-recognised skill assessment are issued a real, independently verifiable certificate — like the one below.",
     certVerifyId: 'TNSC-NMFS-AGR-POL-1025-0045',
     certVerifyLabel: 'View a Recognised Certificate',
