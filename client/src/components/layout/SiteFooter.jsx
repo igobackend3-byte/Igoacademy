@@ -1,9 +1,13 @@
 /**
- * SiteFooter — shared 4-column footer used across all public pages
+ * SiteFooter — shared footer used across all public pages
  * (website refinement spec, Section 13 — Footer Structure).
  *
- * Columns: Brand · Quick Links · Contact · Follow Us, closed by a single
- * line establishing the IGO GROUP relationship.
+ * Columns: Brand (with a Recognised By line) · Quick Links · Company ·
+ * Contact · Follow Us, closed by a single line establishing the IGO GROUP
+ * relationship. The Recognised By line and Company column (added 26 Aug
+ * 2026) merge in the content from the site's original pre-redesign
+ * footer — TNSDC/MSME recognition plus the IGO Group and legal-page
+ * links — none of which had a home in the new 4-column footer yet.
  *
  * Social links below are placeholders (href="#") — swap in the real
  * Instagram / YouTube / LinkedIn / Facebook URLs once IGO Academy shares
@@ -19,6 +23,20 @@ const QUICK_LINKS = [
   ['About Us', '/about'],
   ['Student Success', '/student-success'],
   ['Contact', '/contact'],
+];
+
+const COMPANY_LINKS = [
+  ['IGO Group Brands', '/igo-brands'],
+  ['About IGO Group', '/about'],
+  ['Privacy Policy', '/privacy-policy'],
+  ['Terms & Conditions', '/terms-and-conditions'],
+  ['Refund Policy', '/refund-policy'],
+  ['Disclaimer', '/disclaimer'],
+];
+
+const RECOGNITIONS = [
+  'TNSDC — Tamil Nadu Skill Development Corp.',
+  'MSME — Ministry of MSME, Govt. of India',
 ];
 
 const SOCIALS = [
@@ -55,9 +73,20 @@ export default function SiteFooter() {
           <div style={{ fontFamily: "'Sora', sans-serif", fontWeight: 900, fontSize: '1rem', color: 'white', marginBottom: '.5rem' }}>
             IGO Academy
           </div>
-          <p style={{ fontSize: '.82rem', color: 'rgba(255,255,255,0.5)', lineHeight: 1.6, margin: 0 }}>
+          <p style={{ fontSize: '.82rem', color: 'rgba(255,255,255,0.5)', lineHeight: 1.6, margin: '0 0 1.25rem' }}>
             Practical. Professional. Future-Ready Agriculture Education.
           </p>
+
+          {/* Recognised By */}
+          <div style={{ fontSize: '.68rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '.2em', color: 'rgba(255,255,255,0.3)', marginBottom: '.6rem' }}>
+            Recognised By
+          </div>
+          {RECOGNITIONS.map(r => (
+            <div key={r} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, marginBottom: '.4rem' }}>
+              <span style={{ width: 5, height: 5, borderRadius: '50%', background: '#DAA520', flexShrink: 0, marginTop: 7 }} />
+              <span style={{ color: 'rgba(255,255,255,0.5)', fontSize: '.8rem', lineHeight: 1.5 }}>{r}</span>
+            </div>
+          ))}
         </div>
 
         {/* Quick Links */}
@@ -66,6 +95,24 @@ export default function SiteFooter() {
             Quick Links
           </div>
           {QUICK_LINKS.map(([label, to]) => (
+            <div
+              key={label}
+              onClick={() => goQuickLink(to)}
+              style={{ color: 'rgba(255,255,255,0.5)', fontSize: '.83rem', cursor: 'pointer', marginBottom: '.6rem' }}
+              onMouseEnter={e => { e.currentTarget.style.color = '#DAA520'; }}
+              onMouseLeave={e => { e.currentTarget.style.color = 'rgba(255,255,255,0.5)'; }}
+            >
+              {label}
+            </div>
+          ))}
+        </div>
+
+        {/* Company */}
+        <div>
+          <div style={{ fontSize: '.68rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '.2em', color: 'rgba(255,255,255,0.3)', marginBottom: '1rem' }}>
+            Company
+          </div>
+          {COMPANY_LINKS.map(([label, to]) => (
             <div
               key={label}
               onClick={() => goQuickLink(to)}
