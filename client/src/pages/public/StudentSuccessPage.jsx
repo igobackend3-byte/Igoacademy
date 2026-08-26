@@ -7,42 +7,33 @@
  * list of real success stories has room to breathe, per the Academy Head's
  * direct request (26 Aug 2026).
  *
- * SUCCESS_STORIES below are real IGO Academy trainees now working within
- * the IGO Group itself, provided directly by the Academy Head — name and
- * current role only. No quotes are fabricated and attached to these real
- * names. Kept in sync with the shorter teaser list on the homepage
- * (HomePage.jsx's own SUCCESS_STORIES constant).
+ * SUCCESS_STORIES data (name, role, role description, testimonial, and the
+ * matching real IGO Group department link) lives in one shared place now —
+ * @/constants/successStories.js — imported here and by HomePage.jsx and
+ * StudentProfilePage.jsx, so all three stay in sync automatically instead
+ * of three hand-maintained copies. See that file for the full data-handling
+ * notes (real names from the Academy Head, no fabricated testimonials).
  *
- * `link` on each entry (added 26 Aug 2026) opens the real IGO Group
- * department page matching that person's role — igogroups.in/departments/
- * site-visit.html, data-analytics-legal.html, agri-operations.html, or the
- * IGO Academy brand page — verified live before wiring, so the "Now With
- * IGO Group" claim is backed by an actual IGO Group page, not a dead link.
- * Photos are still pending from the Academy Head; cards stay initials-avatar
- * until real headshots are supplied.
+ * Each card here links to its own profile page at /student-success/:slug
+ * (StudentProfilePage.jsx) — which explains the role and shows the
+ * testimonial (or a "coming soon" note) before offering a "verify at IGO
+ * Group" button out to the real department page. Cards on this page no
+ * longer redirect straight to IGO Group themselves (changed 26 Aug 2026).
  */
+import { Link } from 'react-router-dom';
 import PublicNav from '@/components/layout/PublicNav';
 import MobileStickyCta from '@/components/layout/MobileStickyCta';
 import EnquiryForm from '@/components/features/EnquiryForm';
 import SEO from '@/components/common/SEO';
 import SiteFooter from '@/components/layout/SiteFooter';
-import { ArrowRight, ExternalLink } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
+import { SUCCESS_STORIES } from '@/constants/successStories';
 
 const SUCCESS_STATS = [
   { num: '800+', label: 'Students Trained' },
   { num: '50+', label: 'Students Placed' },
   { num: 'Multiple', label: 'Live Agriculture Projects' },
   { num: '—', label: 'Industry-Focused Programs' },
-];
-
-const SUCCESS_STORIES = [
-  { name: 'Ashmi Berona KS', role: 'Academy Junior Manager', link: 'https://igogroups.in/brands/igo-academy.html' },
-  { name: 'Kannan T', role: 'Site Visit Executive', link: 'https://igogroups.in/departments/site-visit.html' },
-  { name: 'Punith M', role: 'Site Visit SMO', link: 'https://igogroups.in/departments/site-visit.html' },
-  { name: 'Sivani M', role: 'Data Analyst', link: 'https://igogroups.in/departments/data-analytics-legal.html' },
-  { name: 'Subanu R', role: 'Data Analyst', link: 'https://igogroups.in/departments/data-analytics-legal.html' },
-  { name: 'Jenifer A', role: 'Data Analyst', link: 'https://igogroups.in/departments/data-analytics-legal.html' },
-  { name: 'Sobin G', role: 'Agri Estate Executive', link: 'https://igogroups.in/departments/agri-operations.html' },
 ];
 
 export default function StudentSuccessPage() {
@@ -91,7 +82,7 @@ export default function StudentSuccessPage() {
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: '1.25rem', marginBottom: '3.5rem' }}>
           {SUCCESS_STORIES.map((t, i) => (
-            <a key={i} href={t.link} target="_blank" rel="noopener noreferrer" style={{
+            <Link key={i} to={`/student-success/${t.slug}`} style={{
               background: 'white', border: '1px solid rgba(0,0,0,.06)', borderRadius: 18,
               padding: '1.75rem', display: 'flex', alignItems: 'center', gap: '1rem',
               boxShadow: '0 2px 12px rgba(0,0,0,.04)', textDecoration: 'none', cursor: 'pointer',
@@ -106,8 +97,8 @@ export default function StudentSuccessPage() {
                 <div style={{ fontSize: '.8rem', color: '#6b7280' }}>{t.role}</div>
                 <div style={{ fontSize: '.72rem', color: '#3F8A24', fontWeight: 700, marginTop: 2 }}>IGO Group</div>
               </div>
-              <ExternalLink size={14} color="#9ca3af" style={{ flexShrink: 0 }} />
-            </a>
+              <ArrowRight size={14} color="#9ca3af" style={{ flexShrink: 0 }} />
+            </Link>
           ))}
         </div>
 

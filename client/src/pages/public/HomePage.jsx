@@ -9,7 +9,7 @@ import {
   ArrowRight, CheckCircle, Award, Users, MapPin,
   Leaf, Fish, Layers, Sun, PawPrint, Building2,
   Droplet, Droplets, TreePine, Briefcase,
-  School, Calendar, ExternalLink,
+  School, Calendar,
 } from 'lucide-react';
 import PublicNav from '@/components/layout/PublicNav';
 import MobileStickyCta from '@/components/layout/MobileStickyCta';
@@ -17,6 +17,7 @@ import EnquiryForm from '@/components/features/EnquiryForm';
 import SEO from '@/components/common/SEO';
 import SiteFooter from '@/components/layout/SiteFooter';
 import { ORGANIZATION_SCHEMA, HOME_FAQS, buildFaqSchema } from '@/constants/schema';
+import { SUCCESS_STORIES } from '@/constants/successStories';
 
 /* ── All 26 IGO Group brands for the homepage ticker ──────────────── */
 const ALL_BRANDS = [
@@ -139,16 +140,6 @@ const SUCCESS_STATS = [
   { num: '50+', label: 'Students Placed' },
   { num: 'Multiple', label: 'Live Agriculture Projects' },
   { num: '—', label: 'Industry-Focused Programs' },
-];
-
-const SUCCESS_STORIES = [
-  { name: 'Ashmi Berona KS', role: 'Academy Junior Manager', link: 'https://igogroups.in/brands/igo-academy.html' },
-  { name: 'Kannan T', role: 'Site Visit Executive', link: 'https://igogroups.in/departments/site-visit.html' },
-  { name: 'Punith M', role: 'Site Visit SMO', link: 'https://igogroups.in/departments/site-visit.html' },
-  { name: 'Sivani M', role: 'Data Analyst', link: 'https://igogroups.in/departments/data-analytics-legal.html' },
-  { name: 'Subanu R', role: 'Data Analyst', link: 'https://igogroups.in/departments/data-analytics-legal.html' },
-  { name: 'Jenifer A', role: 'Data Analyst', link: 'https://igogroups.in/departments/data-analytics-legal.html' },
-  { name: 'Sobin G', role: 'Agri Estate Executive', link: 'https://igogroups.in/departments/agri-operations.html' },
 ];
 
 /* ── Academic & Industry Partnerships — spec Section 9 ───────────────── */
@@ -828,11 +819,15 @@ export default function HomePage() {
           {/* Success stories */}
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))', gap: '1.25rem', marginBottom: '2.25rem' }}>
             {SUCCESS_STORIES.map((t, i) => (
-              <a key={i} href={t.link} target="_blank" rel="noopener noreferrer" style={{
-                background: '#F5F7F3', border: '1px solid rgba(0,0,0,.06)', borderRadius: 18,
-                padding: '1.5rem', display: 'flex', alignItems: 'center', gap: '.9rem',
-                textDecoration: 'none', cursor: 'pointer',
-              }}>
+              <div
+                key={i}
+                onClick={() => navigate(`/student-success/${t.slug}`)}
+                style={{
+                  background: '#F5F7F3', border: '1px solid rgba(0,0,0,.06)', borderRadius: 18,
+                  padding: '1.5rem', display: 'flex', alignItems: 'center', gap: '.9rem',
+                  cursor: 'pointer',
+                }}
+              >
                 <div style={{
                   width: 44, height: 44, borderRadius: '50%', background: '#DAA520',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
@@ -842,8 +837,8 @@ export default function HomePage() {
                   <div style={{ fontWeight: 800, fontSize: '.9rem', color: '#0C2014' }}>{t.name}</div>
                   <div style={{ fontSize: '.76rem', color: '#6b7280' }}>{t.role} · IGO Group</div>
                 </div>
-                <ExternalLink size={14} color="#9ca3af" style={{ flexShrink: 0 }} />
-              </a>
+                <ArrowRight size={14} color="#9ca3af" style={{ flexShrink: 0 }} />
+              </div>
             ))}
           </div>
 

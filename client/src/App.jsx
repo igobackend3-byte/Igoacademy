@@ -55,6 +55,7 @@ import WorkshopsPage     from '@/pages/public/WorkshopsPage';
 import CollegesPage      from '@/pages/public/CollegesPage';
 import CareersPage       from '@/pages/public/CareersPage';
 import StudentSuccessPage from '@/pages/public/StudentSuccessPage';
+import StudentProfilePage from '@/pages/public/StudentProfilePage';
 import TermsAndConditions from '@/pages/public/TermsAndConditions';
 import RefundPolicy      from '@/pages/public/RefundPolicy';
 import Disclaimer        from '@/pages/public/Disclaimer';
@@ -91,6 +92,7 @@ export default function App() {
         <Route path="/for-colleges"          element={<CollegesPage />} />
         <Route path="/careers"               element={<CareersPage />} />
         <Route path="/student-success"       element={<StudentSuccessPage />} />
+        <Route path="/student-success/:slug" element={<StudentProfilePage />} />
         <Route path="/privacy-policy"        element={<PrivacyPolicy />} />
         <Route path="/terms-and-conditions"  element={<TermsAndConditions />} />
         <Route path="/refund-policy"         element={<RefundPolicy />} />
