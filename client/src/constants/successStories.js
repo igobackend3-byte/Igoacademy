@@ -71,6 +71,7 @@ export const SUCCESS_STORIES = [
     testimonial: null,
     link: 'https://igogroups.in/departments/data-analytics-legal.html',
     linkLabel: 'IGO Data Analytics & Legal Department',
+    photo: '/success-photos/sivani-m.jpg',
   },
   {
     slug: 'subanu-r',
