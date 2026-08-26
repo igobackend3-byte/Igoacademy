@@ -18,6 +18,7 @@
  * attached to a real named person.
  */
 import { useState } from 'react';
+import { createPortal } from 'react-dom';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import PublicNav from '@/components/layout/PublicNav';
 import MobileStickyCta from '@/components/layout/MobileStickyCta';
@@ -159,8 +160,14 @@ export default function StudentProfilePage() {
       <SiteFooter />
       <MobileStickyCta enquireHref="/student-success" />
 
-      {/* Full-size photo lightbox — opens when the profile photo is clicked */}
-      {photoOpen && person.photo && (
+      {/* Full-size photo lightbox — opens when the profile photo is clicked.
+          Rendered via a portal directly into document.body so its
+          `position: fixed` is relative to the real viewport, not to the
+          `.page-enter` wrapper above (which has a CSS transform on it —
+          any ancestor transform makes `fixed` behave like `absolute`
+          relative to that ancestor instead of the screen, which is why
+          the photo was rendering far off-screen instead of centered). */}
+      {photoOpen && person.photo && createPortal(
         <div
           onClick={() => setPhotoOpen(false)}
           style={{
@@ -189,7 +196,8 @@ export default function StudentProfilePage() {
               boxShadow: '0 10px 50px rgba(0,0,0,0.5)', cursor: 'default',
             }}
           />
-        </div>
+        </div>,
+        document.body
       )}
     </div>
   );

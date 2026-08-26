@@ -10,12 +10,12 @@ import {
 } from 'lucide-react';
 
 /* ── Academy Head — website refinement spec, Section 8 ─────────────
-   Photograph is a clearly-marked placeholder (initials avatar) pending a
-   real headshot from IGO Academy — nothing here is fabricated beyond
-   what the spec itself supplied. ── */
+   photo: real headshot supplied by the Academy Head (26 Aug 2026), stored
+   under /public/team/. Falls back to the initials avatar if ever absent. ── */
 const ACADEMY_HEAD = {
-  name: 'Shanmathi',
+  name: 'Shanmathi V',
   title: 'Academy Head | IGO Academy',
+  photo: '/team/shanmathi-v.jpg',
   mission: '"To build a generation of industry-ready agriculture professionals — connecting classroom learning with real farm practice, and connecting every graduate to a career or entrepreneurship path."',
   responsibilities: [
     'Oversees end-to-end training operations and academic development across all program categories.',
@@ -604,19 +604,18 @@ export default function AboutPage() {
             padding: '2.5rem', display: 'flex', flexWrap: 'wrap', gap: '2.5rem',
             boxShadow: '0 4px 24px rgba(0,0,0,.05)',
           }}>
-            {/* Photo placeholder — initials avatar until a real headshot is supplied */}
+            {/* Real headshot when supplied — falls back to the initials avatar */}
             <div style={{ flex: '0 0 auto', textAlign: 'center' }}>
               <div style={{
-                width: 140, height: 140, borderRadius: '50%',
+                width: 140, height: 140, borderRadius: '50%', overflow: 'hidden',
                 background: 'linear-gradient(135deg, #DAA520, #C5A03F)',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                 fontFamily: "'Sora', sans-serif", fontSize: '2.4rem', fontWeight: 900, color: 'white',
                 margin: '0 auto .75rem',
               }}>
-                {ACADEMY_HEAD.name.charAt(0)}
-              </div>
-              <div style={{ fontSize: '.68rem', color: '#9ca3af', fontWeight: 600, maxWidth: 140 }}>
-                Photograph coming soon
+                {ACADEMY_HEAD.photo ? (
+                  <img src={ACADEMY_HEAD.photo} alt={ACADEMY_HEAD.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                ) : ACADEMY_HEAD.name.charAt(0)}
               </div>
             </div>
 

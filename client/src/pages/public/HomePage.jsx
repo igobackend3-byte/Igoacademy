@@ -868,17 +868,19 @@ export default function HomePage() {
             boxShadow: '0 4px 24px rgba(0,0,0,.05)',
           }}>
             <div style={{
-              width: 88, height: 88, borderRadius: '50%', flexShrink: 0,
+              width: 88, height: 88, borderRadius: '50%', flexShrink: 0, overflow: 'hidden',
               background: 'linear-gradient(135deg, #DAA520, #C5A03F)',
               display: 'flex', alignItems: 'center', justifyContent: 'center',
               fontFamily: "'Sora', sans-serif", fontSize: '1.7rem', fontWeight: 900, color: 'white',
-            }}>S</div>
+            }}>
+              <img src="/team/shanmathi-v.jpg" alt="Shanmathi V" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+            </div>
             <div style={{ flex: '1 1 320px' }}>
               <p style={{ color: '#C5A03F', fontSize: '.65rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '.2em', marginBottom: '.5rem' }}>
                 Meet Our Academy Head
               </p>
               <h3 style={{ fontFamily: "'Sora', sans-serif", fontWeight: 900, fontSize: '1.2rem', color: '#0C2014', marginBottom: '.2rem' }}>
-                Shanmathi
+                Shanmathi V
               </h3>
               <p style={{ color: '#6b7280', fontSize: '.85rem', marginBottom: '.9rem' }}>Academy Head | IGO Academy</p>
               <p style={{ color: '#4C5B50', fontSize: '.88rem', lineHeight: 1.6, fontStyle: 'italic', marginBottom: '1rem' }}>
@@ -916,11 +918,11 @@ export default function HomePage() {
             alignItems: 'flex-start', gap: '1.5rem', color: 'white',
           }}>
             <div style={{
-              width: 56, height: 56, borderRadius: 16, background: 'white',
+              width: 92, height: 92, borderRadius: 18, background: 'white',
               border: '1px solid rgba(0,0,0,.07)',
               display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, overflow: 'hidden',
             }}>
-              <img src="/partners/gandhigram-university-logo.png" alt="Gandhigram Rural Institute" style={{ width: '100%', height: '100%', objectFit: 'contain', padding: 5 }} />
+              <img src="/partners/gandhigram-university-logo.png" alt="Gandhigram Rural Institute" style={{ width: '100%', height: '100%', objectFit: 'contain', padding: 8 }} />
             </div>
             <div style={{ flex: '1 1 320px' }}>
               <span style={{ display: 'block', color: '#DAA520', fontSize: '.68rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '.15em' }}>
@@ -943,11 +945,11 @@ export default function HomePage() {
                 background: '#F5F7F3', border: '1px solid rgba(0,0,0,.06)', borderRadius: 16,
                 padding: '1.25rem', display: 'flex', alignItems: 'center', gap: '.85rem',
               }}>
-                <div style={{ width: 40, height: 40, borderRadius: 12, background: 'white', border: '1px solid rgba(0,0,0,.07)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, overflow: 'hidden' }}>
+                <div style={{ width: 68, height: 68, borderRadius: 14, background: 'white', border: '1px solid rgba(0,0,0,.07)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, overflow: 'hidden' }}>
                   {p.logo ? (
-                    <img src={p.logo} alt={p.name} style={{ width: '100%', height: '100%', objectFit: 'contain', padding: 4 }} />
+                    <img src={p.logo} alt={p.name} style={{ width: '100%', height: '100%', objectFit: 'contain', padding: 6 }} />
                   ) : (
-                    <School size={18} color="#3F8A24" strokeWidth={1.75} />
+                    <School size={26} color="#3F8A24" strokeWidth={1.75} />
                   )}
                 </div>
                 <div>

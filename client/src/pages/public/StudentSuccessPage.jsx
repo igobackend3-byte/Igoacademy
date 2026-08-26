@@ -33,7 +33,7 @@ const SUCCESS_STATS = [
   { num: '800+', label: 'Students Trained' },
   { num: '50+', label: 'Students Placed' },
   { num: 'Multiple', label: 'Live Agriculture Projects' },
-  { num: '—', label: 'Industry-Focused Programs' },
+  { num: 'Agri Career Launchpad', label: 'Industry-Focused Programs' },
 ];
 
 export default function StudentSuccessPage() {
