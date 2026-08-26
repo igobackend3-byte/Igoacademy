@@ -2,11 +2,35 @@ import { useNavigate } from 'react-router-dom';
 import PublicNav from '@/components/layout/PublicNav';
 import MobileStickyCta from '@/components/layout/MobileStickyCta';
 import SEO from '@/components/common/SEO';
+import SiteFooter from '@/components/layout/SiteFooter';
 import {
   GraduationCap, Target, Eye, Award, Users, MapPin, ArrowRight,
   Sprout, Layers, Sun, Fish, PawPrint, Building2, CheckCircle,
-  Globe, BookOpen, Cpu, Heart,
+  Globe, BookOpen, Cpu, Heart, Quote,
 } from 'lucide-react';
+
+/* ── Academy Head — website refinement spec, Section 8 ─────────────
+   Photograph is a clearly-marked placeholder (initials avatar) pending a
+   real headshot from IGO Academy — nothing here is fabricated beyond
+   what the spec itself supplied. ── */
+const ACADEMY_HEAD = {
+  name: 'Shanmathi',
+  title: 'Academy Head | IGO Academy',
+  mission: '"To build a generation of industry-ready agriculture professionals — connecting classroom learning with real farm practice, and connecting every graduate to a career or entrepreneurship path."',
+  responsibilities: [
+    'Oversees end-to-end training operations and academic development across all program categories.',
+    'Designs and approves curriculum, ensuring theory and live farm practical hours stay balanced.',
+    'Leads placement and industry-connect initiatives for graduating students.',
+    'Mentors student cohorts through their learning journey, from enrolment to certification.',
+    'Builds and manages institutional, university and industry partnerships.',
+  ],
+  achievements: [
+    '800+ Students Supported & Trained',
+    '50+ Students Connected to Placement Opportunities',
+    'Led Training Operations & Academic Development',
+    'Focused on Building Industry-Ready Agriculture Professionals',
+  ],
+};
 
 /* ── Pillars ──────────────────────────────────────────────────────── */
 const PILLARS = [
@@ -173,6 +197,21 @@ export default function AboutPage() {
               </div>
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* ── CORE POSITIONING STATEMENT (spec Section 1) ────────────── */}
+      <section style={{ background: '#F5F7F3', padding: '3.5rem 2rem' }}>
+        <div style={{ maxWidth: 760, margin: '0 auto', textAlign: 'center' }}>
+          <Quote size={26} color="#C5A03F" style={{ marginBottom: '1rem' }} />
+          <p style={{
+            fontFamily: "'Sora', sans-serif", fontStyle: 'italic', fontWeight: 700,
+            fontSize: 'clamp(1.15rem,2.2vw,1.5rem)', color: '#0C2014', lineHeight: 1.5,
+          }}>
+            IGO Academy is not just an online course platform. It is a practical agriculture
+            learning ecosystem connecting education, live farm exposure, industry skills,
+            careers and entrepreneurship.
+          </p>
         </div>
       </section>
 
@@ -546,6 +585,75 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* ── ACADEMY HEAD (spec Section 8) ───────────────────────────
+          Full profile — the homepage's own section (Section 14 #10) is a
+          shorter teaser linking here via "Meet Our Leadership →". */}
+      <section style={{ background: '#F5F7F3', padding: '5rem 2rem' }}>
+        <div style={{ maxWidth: 900, margin: '0 auto' }}>
+          <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
+            <p style={{ color: '#C5A03F', fontSize: '.68rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '.22em', marginBottom: '.75rem' }}>
+              Leadership
+            </p>
+            <h2 style={{ fontFamily: "'Sora', sans-serif", fontSize: 'clamp(1.7rem,3vw,2.4rem)', fontWeight: 900, color: '#0C2014', letterSpacing: '-.025em' }}>
+              Meet Our Academy Head
+            </h2>
+          </div>
+
+          <div style={{
+            background: 'white', border: '1px solid rgba(0,0,0,.06)', borderRadius: 24,
+            padding: '2.5rem', display: 'flex', flexWrap: 'wrap', gap: '2.5rem',
+            boxShadow: '0 4px 24px rgba(0,0,0,.05)',
+          }}>
+            {/* Photo placeholder — initials avatar until a real headshot is supplied */}
+            <div style={{ flex: '0 0 auto', textAlign: 'center' }}>
+              <div style={{
+                width: 140, height: 140, borderRadius: '50%',
+                background: 'linear-gradient(135deg, #DAA520, #C5A03F)',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                fontFamily: "'Sora', sans-serif", fontSize: '2.4rem', fontWeight: 900, color: 'white',
+                margin: '0 auto .75rem',
+              }}>
+                {ACADEMY_HEAD.name.charAt(0)}
+              </div>
+              <div style={{ fontSize: '.68rem', color: '#9ca3af', fontWeight: 600, maxWidth: 140 }}>
+                Photograph coming soon
+              </div>
+            </div>
+
+            <div style={{ flex: '1 1 380px' }}>
+              <h3 style={{ fontFamily: "'Sora', sans-serif", fontWeight: 900, fontSize: '1.3rem', color: '#0C2014', marginBottom: '.2rem' }}>
+                {ACADEMY_HEAD.name}
+              </h3>
+              <div style={{ color: '#C5A03F', fontWeight: 700, fontSize: '.85rem', marginBottom: '1.1rem' }}>
+                {ACADEMY_HEAD.title}
+              </div>
+              <p style={{ fontStyle: 'italic', color: '#4C5B50', fontSize: '.92rem', lineHeight: 1.7, marginBottom: '1.5rem' }}>
+                {ACADEMY_HEAD.mission}
+              </p>
+
+              <div style={{ fontSize: '.7rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '.14em', color: '#9ca3af', marginBottom: '.7rem' }}>
+                Core Responsibilities
+              </div>
+              <ul style={{ margin: '0 0 1.5rem', paddingLeft: '1.1rem', color: '#4C5B50', fontSize: '.86rem', lineHeight: 1.75 }}>
+                {ACADEMY_HEAD.responsibilities.map(r => <li key={r}>{r}</li>)}
+              </ul>
+
+              <div style={{ fontSize: '.7rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '.14em', color: '#9ca3af', marginBottom: '.7rem' }}>
+                Achievement Highlights
+              </div>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '.5rem' }}>
+                {ACADEMY_HEAD.achievements.map(a => (
+                  <span key={a} style={{
+                    background: '#EDF6E4', color: '#2d6a14', fontWeight: 700, fontSize: '.78rem',
+                    padding: '.45rem .9rem', borderRadius: 999,
+                  }}>{a}</span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ── CTA ──────────────────────────────────────────────────── */}
       <section style={{ background: '#F5F7F3', padding: '5rem 2rem', textAlign: 'center' }}>
         <div style={{ maxWidth: 580, margin: '0 auto' }}>
@@ -596,9 +704,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <footer style={{ background: '#0C2014', color: 'rgba(255,255,255,0.65)', textAlign: 'center', padding: '1.5rem 1rem', fontSize: '.82rem' }}>
-        &copy; 2026 IGO Academy — An Unit of IGO GROUP. TNSDC + MSME Recognised | Chennai, Tamil Nadu
-      </footer>
+      <SiteFooter />
 
       <MobileStickyCta />
     </div>

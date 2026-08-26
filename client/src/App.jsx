@@ -51,6 +51,9 @@ import AboutPage         from '@/pages/public/AboutPage';
 import PrivacyPolicy     from '@/pages/public/PrivacyPolicy';
 import ContactPage       from '@/pages/public/ContactPage';
 import EnquirePage       from '@/pages/public/EnquirePage';
+import WorkshopsPage     from '@/pages/public/WorkshopsPage';
+import CollegesPage      from '@/pages/public/CollegesPage';
+import CareersPage       from '@/pages/public/CareersPage';
 import TermsAndConditions from '@/pages/public/TermsAndConditions';
 import RefundPolicy      from '@/pages/public/RefundPolicy';
 import Disclaimer        from '@/pages/public/Disclaimer';
@@ -83,6 +86,9 @@ export default function App() {
         <Route path="/about"                 element={<AboutPage />} />
         <Route path="/contact"               element={<ContactPage />} />
         <Route path="/enquire"               element={<EnquirePage />} />
+        <Route path="/workshops"             element={<WorkshopsPage />} />
+        <Route path="/for-colleges"          element={<CollegesPage />} />
+        <Route path="/careers"               element={<CareersPage />} />
         <Route path="/privacy-policy"        element={<PrivacyPolicy />} />
         <Route path="/terms-and-conditions"  element={<TermsAndConditions />} />
         <Route path="/refund-policy"         element={<RefundPolicy />} />

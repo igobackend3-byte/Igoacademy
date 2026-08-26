@@ -17,7 +17,7 @@ import { useState } from 'react';
 import toast from 'react-hot-toast';
 import {
   Clock, Award, Users, CheckCircle2, BookOpen, GraduationCap,
-  Tag, Star, ArrowLeft, Briefcase,
+  Tag, Star, ArrowLeft, Briefcase, Target, ClipboardList,
 } from 'lucide-react';
 import api from '@/services/api';
 import { useAuth } from '@/context/AuthContext';
@@ -26,7 +26,13 @@ import MobileStickyCta from '@/components/layout/MobileStickyCta';
 import EnquiryForm from '@/components/features/EnquiryForm';
 import PaymentModal from '@/components/features/PaymentModal';
 import SEO from '@/components/common/SEO';
+import SiteFooter from '@/components/layout/SiteFooter';
 import { buildCourseSchema } from '@/constants/schema';
+
+/* Fixed learning-method vocabulary from the website refinement spec,
+   Section 10 — shown only for the modes this course actually offers
+   (course.learning_modes from the API), so nothing is fabricated per-course. */
+const LEARNING_METHOD_TAGS = ['Online', 'Offline', 'Hybrid', 'Live Farm Practical'];
 
 function formatPrice(price) {
   const n = Number(price);
@@ -213,14 +219,20 @@ export default function CourseDetail() {
             <p>{course.prerequisites || 'No strict prerequisites listed for this course — contact us if you\'re unsure whether it fits your background.'}</p>
           </Section>
 
-          <Section icon={Users} title="Trainer Information">
-            <p>{course.trainer_name ? `Led by ${course.trainer_name}.` : 'Trainer details will be shared closer to the batch start date.'}</p>
+          <Section icon={Target} title="What You Will Learn">
+            {course.learning_outcomes && course.learning_outcomes.length > 0 ? (
+              <ul style={{ paddingLeft: '1.25rem', margin: 0, display: 'flex', flexDirection: 'column', gap: '.4rem' }}>
+                {course.learning_outcomes.map((o, i) => <li key={i}>{o}</li>)}
+              </ul>
+            ) : (
+              <p>The specific outcome-by-outcome breakdown for this course will be published closer to the batch start date — the Course Overview above covers what this program is about in the meantime.</p>
+            )}
           </Section>
 
-          <Section icon={Briefcase} title="Practical Training">
-            <p>Where the course format supports it, learning is paired with hands-on, real farm practical training — not classroom theory alone.</p>
-          </Section>
-
+          {/* Section order below follows the website refinement spec, Section
+              10 (Course Page Template) exactly: What You Will Learn → Course
+              Curriculum → Theory/Practical Hours → Learning Method →
+              Trainer/Faculty → Career Opportunities → Certification. */}
           <Section icon={BookOpen} title="Detailed Curriculum">
             {course.modules && course.modules.length > 0 ? (
               <ol style={{ paddingLeft: '1.25rem', margin: 0, display: 'flex', flexDirection: 'column', gap: '.5rem' }}>
@@ -231,12 +243,48 @@ export default function CourseDetail() {
             )}
           </Section>
 
-          <Section icon={Award} title="Certification">
-            <p>Students who meet the course's completion requirements receive a TNSDC + MSME recognised certificate, independently verifiable online via a QR code.</p>
+          <Section icon={Clock} title="Theory &amp; Practical Hours">
+            {course.theory_hours || course.practical_hours ? (
+              <p>{[course.theory_hours && `${course.theory_hours} hrs theory`, course.practical_hours && `${course.practical_hours} hrs live farm practical`].filter(Boolean).join(' + ')}.</p>
+            ) : course.duration_hours ? (
+              <p>{course.duration_hours} hours total. The exact theory/practical split is confirmed closer to the batch start date — contact us for details.</p>
+            ) : (
+              <p>The theory/practical hour split for this course is confirmed closer to the batch start date — contact us for details.</p>
+            )}
           </Section>
 
-          <Section icon={Briefcase} title="Internship, Placement Support & Entrepreneurship">
-            <p>Graduates get access to internship and career guidance, and support for those looking to start their own agri-business — as guidance and support, not a guaranteed job offer or income outcome.</p>
+          <Section icon={ClipboardList} title="Learning Method">
+            {course.learning_modes && course.learning_modes.length > 0 ? (
+              <div style={{ display: 'flex', gap: '.5rem', flexWrap: 'wrap' }}>
+                {course.learning_modes.map(m => <Pill key={m}>{m}</Pill>)}
+              </div>
+            ) : (
+              <div style={{ display: 'flex', gap: '.5rem', flexWrap: 'wrap' }}>
+                {LEARNING_METHOD_TAGS.map(m => <Pill key={m}>{m}</Pill>)}
+              </div>
+            )}
+          </Section>
+
+          <Section icon={Users} title="Trainer Information">
+            <p>{course.trainer_name ? `Led by ${course.trainer_name}${course.trainer_credential ? ` — ${course.trainer_credential}` : ''}.` : 'Trainer details will be shared closer to the batch start date.'}</p>
+          </Section>
+
+          <Section icon={Briefcase} title="Practical Training">
+            <p>Where the course format supports it, learning is paired with hands-on, real farm practical training — not classroom theory alone.</p>
+          </Section>
+
+          <Section icon={Briefcase} title="Career Opportunities">
+            {course.career_opportunities && course.career_opportunities.length > 0 ? (
+              <div style={{ display: 'flex', gap: '.5rem', flexWrap: 'wrap' }}>
+                {course.career_opportunities.map(c => <Pill key={c}>{c}</Pill>)}
+              </div>
+            ) : (
+              <p>Graduates get access to internship and career guidance, and support for those looking to start their own agri-business — as guidance and support, not a guaranteed job offer or income outcome.</p>
+            )}
+          </Section>
+
+          <Section icon={Award} title="Certification">
+            <p>Students who meet the course's completion requirements receive a TNSDC + MSME recognised certificate, independently verifiable online via a QR code.</p>
           </Section>
 
           <Section title="Frequently Asked Questions">
@@ -275,7 +323,7 @@ export default function CourseDetail() {
               {isEnrolling ? 'Enrolling…' : 'Enroll Now'}
             </button>
             <a href="#course-enquire" className="btn-outline" style={{ width: '100%', padding: '.85rem', fontWeight: 800, display: 'block', textAlign: 'center', textDecoration: 'none', boxSizing: 'border-box' }}>
-              Enquire Now
+              Speak with a Course Advisor
             </a>
           </div>
 
@@ -288,9 +336,21 @@ export default function CourseDetail() {
         </div>
       </div>
 
-      <footer style={{ background: '#0C2014', color: 'rgba(255,255,255,0.65)', textAlign: 'center', padding: '1.5rem 1rem', fontSize: '.82rem' }}>
-        &copy; 2026 IGO Academy — An Unit of IGO GROUP. TNSDC + MSME Recognised | Chennai, Tamil Nadu
-      </footer>
+      {/* Closing line — website refinement spec, Section 1 & 15: the core
+          positioning statement (shortened form) belongs at the close of
+          every program/course page, reinforcing the same message the
+          homepage, About page and footer already carry. */}
+      <section style={{ background: '#F5F7F3', padding: '2.5rem 2rem', textAlign: 'center' }}>
+        <p style={{
+          fontFamily: "'Sora', sans-serif", fontStyle: 'italic', fontWeight: 700,
+          fontSize: '1rem', color: '#0C2014', lineHeight: 1.6, maxWidth: 640, margin: '0 auto',
+        }}>
+          IGO Academy is a practical agriculture learning ecosystem connecting education,
+          live farm exposure, industry skills, careers and entrepreneurship.
+        </p>
+      </section>
+
+      <SiteFooter />
 
       <MobileStickyCta />
 

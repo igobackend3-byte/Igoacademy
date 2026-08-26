@@ -8,6 +8,7 @@ import PublicNav from '@/components/layout/PublicNav';
 import MobileStickyCta from '@/components/layout/MobileStickyCta';
 import EnquiryForm from '@/components/features/EnquiryForm';
 import SEO from '@/components/common/SEO';
+import SiteFooter from '@/components/layout/SiteFooter';
 import { IGO_META, IGO_CONTACT } from '@/constants/brand';
 import { Mail, MapPin, Phone, MessageCircle } from 'lucide-react';
 
@@ -82,9 +83,7 @@ export default function ContactPage() {
         </div>
       </div>
 
-      <footer style={{ background: '#0C2014', color: 'rgba(255,255,255,0.65)', textAlign: 'center', padding: '1.5rem 1rem', fontSize: '.82rem' }}>
-        &copy; 2026 IGO Academy — An Unit of IGO GROUP. TNSDC + MSME Recognised | Chennai, Tamil Nadu
-      </footer>
+      <SiteFooter />
 
       <MobileStickyCta />
     </div>

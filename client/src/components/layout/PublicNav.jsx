@@ -1,14 +1,20 @@
 /**
  * PublicNav — Sticky top navigation bar for all public pages.
  * Used on HomePage, Catalog, and CourseDetail. Reads auth state internally.
- * Nav structure follows requirement doc Section 6 as far as pages exist
- * today — Internships / Career & Placement (standalone) / Entrepreneurship
- * (standalone) / Knowledge Centre / Upcoming Programs are Phase 2–3 pages
- * not yet built, so they're intentionally left out rather than linked to
- * nowhere. Practical Training and Career & Entrepreneurship point at the
- * homepage sections in the meantime; Contact now has its own page.
- * Below 768px (Section 12 Mobile UX) the center links + right auth buttons
- * are replaced by a hamburger toggle opening a full mobile nav panel.
+ * Nav structure follows the website refinement spec, Section 3.1 — Home,
+ * About Us, Programs, Workshops, Corporate Training, Student Success,
+ * Careers, Contact, plus a visually distinct "Apply Now" CTA. Student
+ * Success links to the homepage section (id="student-success") rather than
+ * a standalone page, matching how Practical Training/Career pathways
+ * already scroll-link from other pages. IGO Group and the old Practical
+ * Training/Career & Entrepreneurship top-level links were dropped per the
+ * spec's "keep the primary menu short" instruction — those pages/sections
+ * remain reachable by URL, just not from the nav.
+ * Below 1250px (Section 12 Mobile UX) the center links + right auth buttons
+ * are replaced by a hamburger toggle opening a full mobile nav panel — with
+ * 8 nav labels plus the Apply Now/Sign In/Get Started buttons, the full row
+ * genuinely doesn't fit narrower than that without crowding, so the
+ * breakpoint sits well above the usual 768px phone/tablet cutoff.
  */
 import { useState } from 'react';
 import { useNavigate, useLocation, Link } from 'react-router-dom';
@@ -18,10 +24,11 @@ import { useAuth } from '@/context/AuthContext';
 const NAV_LINKS = [
   ['Home', '/'],
   ['About Us', '/about'],
-  ['Courses', '/courses'],
-  ['Practical Training', '/#practical-training'],
-  ['Career & Entrepreneurship', '/#career-pathways'],
-  ['IGO Group', '/igo-brands'],
+  ['Programs', '/courses'],
+  ['Workshops', '/workshops'],
+  ['Corporate Training', '/for-colleges'],
+  ['Student Success', '/#student-success'],
+  ['Careers', '/careers'],
   ['Contact', '/contact'],
 ];
 
@@ -65,7 +72,7 @@ export default function PublicNav() {
         alignItems:      'center',
         justifyContent:  'space-between',
         height:          '64px',
-        padding:         '0 2rem',
+        padding:         '0 1.5rem',
       }}
     >
       {/* ── Left: brand (logo + wordmark) ── */}
@@ -94,12 +101,13 @@ export default function PublicNav() {
         </span>
       </div>
 
-      {/* ── Center: nav links (hidden <768px) ── */}
+      {/* ── Center: nav links (hidden below the 1250px breakpoint) ── */}
       <div
         style={{
           display:    'flex',
-          gap:        '2rem',
+          gap:        '1.1rem',
           alignItems: 'center',
+          flexShrink: 0,
         }}
         className="public-nav-links"
       >
@@ -111,7 +119,7 @@ export default function PublicNav() {
               textDecoration: 'none',
               color:          '#4C5B50',
               fontWeight:     600,
-              fontSize:       '.88rem',
+              fontSize:       '.82rem',
               whiteSpace:     'nowrap',
             }}
           >
@@ -120,14 +128,14 @@ export default function PublicNav() {
         ))}
       </div>
 
-      {/* ── Right: Enquire Now CTA + auth buttons (hidden <768px, replaced by hamburger) ── */}
-      <div className="public-nav-right" style={{ display: 'flex', gap: '.75rem', alignItems: 'center' }}>
+      {/* ── Right: Apply Now CTA + auth buttons (hidden below the 1250px breakpoint, replaced by hamburger) ── */}
+      <div className="public-nav-right" style={{ display: 'flex', gap: '.5rem', alignItems: 'center', flexShrink: 0 }}>
         <button
           onClick={goToEnquiry}
           className="btn-primary btn-sm"
           style={{ width: 'auto', display: 'inline-flex', alignItems: 'center' }}
         >
-          Enquire Now
+          Apply Now
         </button>
         {user ? (
           user.role === 'admin' || user.role === 'trainer' ? (
@@ -167,7 +175,7 @@ export default function PublicNav() {
         )}
       </div>
 
-      {/* ── Hamburger toggle — shown only <768px ── */}
+      {/* ── Hamburger toggle — shown only below the 1250px breakpoint ── */}
       <button
         className="public-nav-hamburger"
         aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
@@ -180,7 +188,7 @@ export default function PublicNav() {
         {mobileOpen ? <X size={24} /> : <Menu size={24} />}
       </button>
 
-      {/* ── Mobile dropdown panel — same links + auth actions, shown <768px when open ── */}
+      {/* ── Mobile dropdown panel — same links + auth actions, shown below the 1250px breakpoint when open ── */}
       {mobileOpen && (
         <div
           className="public-nav-mobile-panel"
@@ -210,7 +218,7 @@ export default function PublicNav() {
               className="btn-primary btn-sm"
               style={{ textAlign: 'center' }}
             >
-              Enquire Now
+              Apply Now
             </button>
             {user ? (
               <button
@@ -229,9 +237,11 @@ export default function PublicNav() {
         </div>
       )}
 
-      {/* ── Responsive: swap center links + right buttons for a hamburger below 768px ── */}
+      {/* ── Responsive: swap center links + right buttons for a hamburger below
+          1250px — 8 nav labels plus 3 right-side buttons need that much room
+          to sit comfortably without crowding or overlapping. ── */}
       <style>{`
-        @media (max-width: 767px) {
+        @media (max-width: 1250px) {
           .public-nav-links { display: none !important; }
           .public-nav-right { display: none !important; }
           .public-nav-hamburger { display: flex !important; }

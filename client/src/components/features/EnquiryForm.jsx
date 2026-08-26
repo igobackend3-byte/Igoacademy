@@ -48,7 +48,7 @@ const inputStyle = {
 };
 const labelStyle = { display: 'block', fontSize: '.78rem', fontWeight: 700, color: '#4C5B50', marginBottom: '.4rem' };
 
-export default function EnquiryForm({ courseId, courseTitle, source = 'homepage', compact = false, fields = ALL_FIELDS }) {
+export default function EnquiryForm({ courseId, courseTitle, source = 'homepage', compact = false, fields = ALL_FIELDS, messagePlaceholder = "Tell us what you'd like to know…" }) {
   const [form, setForm] = useState({
     name: '', mobile: '', email: '', location: '',
     course_interest_text: courseTitle || '', candidate_type: '', preferred_mode: '', message: '',
@@ -161,7 +161,7 @@ export default function EnquiryForm({ courseId, courseTitle, source = 'homepage'
       {show('message') && (
         <div style={{ gridColumn: compact ? 'auto' : '1 / -1' }}>
           <label style={labelStyle}>Message</label>
-          <textarea style={{ ...inputStyle, minHeight: 90, resize: 'vertical' }} maxLength={2000} value={form.message} onChange={e => update('message', e.target.value)} placeholder="Tell us what you'd like to know…" />
+          <textarea style={{ ...inputStyle, minHeight: 90, resize: 'vertical' }} maxLength={2000} value={form.message} onChange={e => update('message', e.target.value)} placeholder={messagePlaceholder} />
         </div>
       )}
 
