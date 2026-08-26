@@ -78,8 +78,12 @@ export default function StudentProfilePage() {
         <div style={{
           width: 84, height: 84, borderRadius: '50%', background: '#DAA520', margin: '0 auto .9rem',
           display: 'flex', alignItems: 'center', justifyContent: 'center',
-          color: 'white', fontWeight: 900, fontSize: '2rem',
-        }}>{person.name.charAt(0)}</div>
+          color: 'white', fontWeight: 900, fontSize: '2rem', overflow: 'hidden',
+        }}>
+          {person.photo ? (
+            <img src={person.photo} alt={person.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+          ) : person.name.charAt(0)}
+        </div>
         <h1 style={{ fontFamily: "'Sora', sans-serif", fontSize: 'clamp(1.5rem,3.5vw,2.1rem)', fontWeight: 900, marginBottom: '.35rem' }}>
           {person.name}
         </h1>

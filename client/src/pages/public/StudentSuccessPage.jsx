@@ -90,8 +90,12 @@ export default function StudentSuccessPage() {
               <div style={{
                 width: 52, height: 52, borderRadius: '50%', background: '#DAA520',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
-                color: 'white', fontWeight: 800, fontSize: '1.15rem', flexShrink: 0,
-              }}>{t.name.charAt(0)}</div>
+                color: 'white', fontWeight: 800, fontSize: '1.15rem', flexShrink: 0, overflow: 'hidden',
+              }}>
+                {t.photo ? (
+                  <img src={t.photo} alt={t.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                ) : t.name.charAt(0)}
+              </div>
               <div style={{ flex: 1, minWidth: 0 }}>
                 <div style={{ fontWeight: 800, fontSize: '.98rem', color: '#0C2014' }}>{t.name}</div>
                 <div style={{ fontSize: '.8rem', color: '#6b7280' }}>{t.role}</div>

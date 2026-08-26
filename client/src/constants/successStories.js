@@ -26,6 +26,11 @@
  * verified live on igogroups.in before being added (26 Aug 2026) — shown as
  * a "verify at IGO Group" button on the profile page, not a direct redirect
  * from the card.
+ *
+ * photo: optional real headshot, supplied by the Academy Head as each
+ * person's photo becomes available — cards and profile pages fall back to
+ * the initials-circle avatar when this is absent. Stored under
+ * /public/success-photos/.
  */
 export const SUCCESS_STORIES = [
   {
@@ -45,6 +50,7 @@ export const SUCCESS_STORIES = [
     testimonial: null,
     link: 'https://igogroups.in/departments/site-visit.html',
     linkLabel: 'IGO Site Visit Department',
+    photo: '/success-photos/kannan-t.jpg',
   },
   {
     slug: 'punith-m',
@@ -54,6 +60,7 @@ export const SUCCESS_STORIES = [
     testimonial: null,
     link: 'https://igogroups.in/departments/site-visit.html',
     linkLabel: 'IGO Site Visit Department',
+    photo: '/success-photos/punith-m.jpg',
   },
   {
     slug: 'sivani-m',
@@ -90,5 +97,6 @@ export const SUCCESS_STORIES = [
     testimonial: null,
     link: 'https://igogroups.in/departments/agri-operations.html',
     linkLabel: 'IGO Agri Operations Department',
+    photo: '/success-photos/sobin-g.jpg',
   },
 ];

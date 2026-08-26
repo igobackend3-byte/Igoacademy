@@ -144,9 +144,9 @@ const SUCCESS_STATS = [
 
 /* ── Academic & Industry Partnerships — spec Section 9 ───────────────── */
 const PARTNERS = [
-  { name: 'Gandhigram University', label: 'MOU Partner' },
-  { name: 'VELS University', label: 'Value Added Course Partner' },
-  { name: 'IGO GROUP', label: 'Parent Group' },
+  { name: 'Gandhigram University', label: 'MOU Partner', logo: '/partners/gandhigram-university-logo.png' },
+  { name: 'VELS University', label: 'Value Added Course Partner', logo: '/partners/vels-university-logo.png' },
+  { name: 'IGO GROUP', label: 'Parent Group', logo: '/partners/igo-group-logo.jpg' },
   { name: 'TNSDC, MSME', label: 'Recognised By' },
   { name: 'Industry Partners', label: 'Placement & Project Partner' },
   { name: 'Future Institutional Collaborations', label: 'Coming Soon' },
@@ -831,8 +831,12 @@ export default function HomePage() {
                 <div style={{
                   width: 44, height: 44, borderRadius: '50%', background: '#DAA520',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  color: 'white', fontWeight: 800, fontSize: '1rem', flexShrink: 0,
-                }}>{t.name.charAt(0)}</div>
+                  color: 'white', fontWeight: 800, fontSize: '1rem', flexShrink: 0, overflow: 'hidden',
+                }}>
+                  {t.photo ? (
+                    <img src={t.photo} alt={t.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                  ) : t.name.charAt(0)}
+                </div>
                 <div style={{ flex: 1, minWidth: 0 }}>
                   <div style={{ fontWeight: 800, fontSize: '.9rem', color: '#0C2014' }}>{t.name}</div>
                   <div style={{ fontSize: '.76rem', color: '#6b7280' }}>{t.role} · IGO Group</div>
@@ -914,9 +918,9 @@ export default function HomePage() {
             <div style={{
               width: 56, height: 56, borderRadius: 16, background: 'white',
               border: '1px solid rgba(0,0,0,.07)',
-              display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0,
+              display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, overflow: 'hidden',
             }}>
-              <School size={26} color="#3F8A24" strokeWidth={1.75} />
+              <img src="/partners/gandhigram-university-logo.png" alt="Gandhigram Rural Institute" style={{ width: '100%', height: '100%', objectFit: 'contain', padding: 5 }} />
             </div>
             <div style={{ flex: '1 1 320px' }}>
               <span style={{ display: 'block', color: '#DAA520', fontSize: '.68rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '.15em' }}>
@@ -939,8 +943,12 @@ export default function HomePage() {
                 background: '#F5F7F3', border: '1px solid rgba(0,0,0,.06)', borderRadius: 16,
                 padding: '1.25rem', display: 'flex', alignItems: 'center', gap: '.85rem',
               }}>
-                <div style={{ width: 40, height: 40, borderRadius: 12, background: 'white', border: '1px solid rgba(0,0,0,.07)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                  <School size={18} color="#3F8A24" strokeWidth={1.75} />
+                <div style={{ width: 40, height: 40, borderRadius: 12, background: 'white', border: '1px solid rgba(0,0,0,.07)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, overflow: 'hidden' }}>
+                  {p.logo ? (
+                    <img src={p.logo} alt={p.name} style={{ width: '100%', height: '100%', objectFit: 'contain', padding: 4 }} />
+                  ) : (
+                    <School size={18} color="#3F8A24" strokeWidth={1.75} />
+                  )}
                 </div>
                 <div>
                   <div style={{ fontWeight: 800, fontSize: '.85rem', color: '#0C2014', lineHeight: 1.3 }}>{p.name}</div>
