@@ -17,19 +17,21 @@
  * person's own words — no first-person quote is ever fabricated and
  * attached to a real named person.
  */
+import { useState } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import PublicNav from '@/components/layout/PublicNav';
 import MobileStickyCta from '@/components/layout/MobileStickyCta';
 import EnquiryForm from '@/components/features/EnquiryForm';
 import SEO from '@/components/common/SEO';
 import SiteFooter from '@/components/layout/SiteFooter';
-import { ArrowLeft, ExternalLink, Quote } from 'lucide-react';
+import { ArrowLeft, ExternalLink, Quote, X } from 'lucide-react';
 import { SUCCESS_STORIES } from '@/constants/successStories';
 
 export default function StudentProfilePage() {
   const { slug } = useParams();
   const navigate = useNavigate();
   const person = SUCCESS_STORIES.find(s => s.slug === slug);
+  const [photoOpen, setPhotoOpen] = useState(false);
 
   if (!person) {
     return (
@@ -75,11 +77,15 @@ export default function StudentProfilePage() {
         >
           <ArrowLeft size={14} /> All Success Stories
         </div>
-        <div style={{
-          width: 84, height: 84, borderRadius: '50%', background: '#DAA520', margin: '0 auto .9rem',
-          display: 'flex', alignItems: 'center', justifyContent: 'center',
-          color: 'white', fontWeight: 900, fontSize: '2rem', overflow: 'hidden',
-        }}>
+        <div
+          onClick={() => person.photo && setPhotoOpen(true)}
+          style={{
+            width: 140, height: 140, borderRadius: '50%', background: '#DAA520', margin: '0 auto .9rem',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            color: 'white', fontWeight: 900, fontSize: '2.6rem', overflow: 'hidden',
+            cursor: person.photo ? 'pointer' : 'default',
+          }}
+        >
           {person.photo ? (
             <img src={person.photo} alt={person.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
           ) : person.name.charAt(0)}
@@ -152,6 +158,39 @@ export default function StudentProfilePage() {
 
       <SiteFooter />
       <MobileStickyCta enquireHref="/student-success" />
+
+      {/* Full-size photo lightbox — opens when the profile photo is clicked */}
+      {photoOpen && person.photo && (
+        <div
+          onClick={() => setPhotoOpen(false)}
+          style={{
+            position: 'fixed', inset: 0, background: 'rgba(12,32,20,0.92)', zIndex: 1000,
+            display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '2rem',
+            cursor: 'zoom-out',
+          }}
+        >
+          <button
+            onClick={() => setPhotoOpen(false)}
+            aria-label="Close"
+            style={{
+              position: 'absolute', top: 20, right: 20, background: 'rgba(255,255,255,0.12)',
+              border: 'none', borderRadius: '50%', width: 40, height: 40,
+              display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', color: 'white',
+            }}
+          >
+            <X size={20} />
+          </button>
+          <img
+            src={person.photo}
+            alt={person.name}
+            onClick={e => e.stopPropagation()}
+            style={{
+              maxWidth: '90vw', maxHeight: '85vh', borderRadius: 12,
+              boxShadow: '0 10px 50px rgba(0,0,0,0.5)', cursor: 'default',
+            }}
+          />
+        </div>
+      )}
     </div>
   );
 }

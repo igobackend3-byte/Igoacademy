@@ -80,7 +80,7 @@ export default function StudentSuccessPage() {
           </h2>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '1.25rem', marginBottom: '3.5rem' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(340px, 1fr))', gap: '1.25rem', marginBottom: '3.5rem' }}>
           {SUCCESS_STORIES.map((t, i) => (
             <Link key={i} to={`/student-success/${t.slug}`} style={{
               background: 'white', border: '1px solid rgba(0,0,0,.06)', borderRadius: 18,
@@ -88,9 +88,9 @@ export default function StudentSuccessPage() {
               boxShadow: '0 2px 12px rgba(0,0,0,.04)', textDecoration: 'none', cursor: 'pointer',
             }}>
               <div style={{
-                width: 120, height: 120, borderRadius: '50%', background: '#DAA520',
+                width: 160, height: 160, borderRadius: '50%', background: '#DAA520',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
-                color: 'white', fontWeight: 800, fontSize: '2.3rem', flexShrink: 0, overflow: 'hidden',
+                color: 'white', fontWeight: 800, fontSize: '3rem', flexShrink: 0, overflow: 'hidden',
               }}>
                 {t.photo ? (
                   <img src={t.photo} alt={t.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
