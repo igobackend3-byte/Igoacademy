@@ -127,6 +127,24 @@ export default function StudentProfilePage() {
           )}
         </div>
 
+        {/* Video message — only present when the person has recorded one;
+            renders nothing when person.video is absent. */}
+        {person.video && (
+          <div style={{ background: 'white', border: '1px solid rgba(0,0,0,.06)', borderRadius: 18, padding: '1.75rem', marginBottom: '1.5rem' }}>
+            <div style={{ fontSize: '.68rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '.15em', color: '#9ca3af', marginBottom: '.9rem' }}>
+              Video Message from {firstName}
+            </div>
+            <video
+              src={person.video}
+              poster={person.photo || undefined}
+              controls
+              preload="none"
+              playsInline
+              style={{ width: '100%', maxWidth: 360, display: 'block', margin: '0 auto', borderRadius: 12, background: '#0C2014' }}
+            />
+          </div>
+        )}
+
         {/* Verify at IGO Group — secondary action, not the click destination itself */}
         <a
           href={person.link}

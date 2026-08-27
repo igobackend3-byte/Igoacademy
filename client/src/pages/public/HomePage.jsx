@@ -864,14 +864,14 @@ export default function HomePage() {
               display: 'flex', alignItems: 'center', justifyContent: 'center',
               fontFamily: "'Sora', sans-serif", fontSize: '1.7rem', fontWeight: 900, color: 'white',
             }}>
-              <img src="/team/shanmathi-v.jpg" alt="Shanmathi V" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+              <img src="/team/shanmathi-v.jpg" alt="Shanmathi S" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
             </div>
             <div style={{ flex: '1 1 320px' }}>
               <p style={{ color: '#C5A03F', fontSize: '.65rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '.2em', marginBottom: '.5rem' }}>
                 Meet Our Academy Head
               </p>
               <h3 style={{ fontFamily: "'Sora', sans-serif", fontWeight: 900, fontSize: '1.2rem', color: '#0C2014', marginBottom: '.2rem' }}>
-                Shanmathi V
+                Shanmathi S
               </h3>
               <p style={{ color: '#6b7280', fontSize: '.85rem', marginBottom: '.9rem' }}>Academy Head | IGO Academy</p>
               <p style={{ color: '#4C5B50', fontSize: '.88rem', lineHeight: 1.6, fontStyle: 'italic', marginBottom: '1rem' }}>

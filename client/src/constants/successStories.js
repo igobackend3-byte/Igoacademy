@@ -31,6 +31,11 @@
  * person's photo becomes available — cards and profile pages fall back to
  * the initials-circle avatar when this is absent. Stored under
  * /public/success-photos/.
+ *
+ * video: optional real video message, recorded by the person themselves and
+ * supplied by the Academy Head — StudentProfilePage.jsx plays it when
+ * present, and shows nothing extra when it's absent. Stored under
+ * /public/success-videos/.
  */
 export const SUCCESS_STORIES = [
   {
@@ -72,6 +77,7 @@ export const SUCCESS_STORIES = [
     link: 'https://igogroups.in/departments/data-analytics-legal.html',
     linkLabel: 'IGO Data Analytics & Legal Department',
     photo: '/success-photos/sivani-m.jpg',
+    video: '/success-videos/sivani-m.mp4',
   },
   {
     slug: 'subanu-r',
@@ -82,6 +88,7 @@ export const SUCCESS_STORIES = [
     link: 'https://igogroups.in/departments/data-analytics-legal.html',
     linkLabel: 'IGO Data Analytics & Legal Department',
     photo: '/success-photos/subanu-r.jpg',
+    video: '/success-videos/subanu-r.mp4',
   },
   {
     slug: 'jenifer-a',
